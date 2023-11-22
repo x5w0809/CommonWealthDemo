@@ -1,7 +1,7 @@
-export { default as Footer } from '../../components/footer.vue'
-export { default as Header } from '../../components/header.vue'
-export { default as NavBar } from '../../components/navBar.vue'
-export { default as RightSideBar } from '../../components/rightSideBar.vue'
+export { default as Footer } from '../..\\components\\footer.vue'
+export { default as Header } from '../..\\components\\header.vue'
+export { default as NavBar } from '../..\\components\\navBar.vue'
+export { default as RightSideBar } from '../..\\components\\rightSideBar.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

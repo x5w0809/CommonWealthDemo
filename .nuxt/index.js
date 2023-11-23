@@ -12,7 +12,7 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_3ec15a6e from 'nuxt_plugin_plugin_3ec15a6e' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_0f2614e6 from 'nuxt_plugin_plugin_0f2614e6' // Source: .\\components\\plugin.js (mode: 'all')
 import nuxt_plugin_vueswiper_6a7b4f42 from 'nuxt_plugin_vueswiper_6a7b4f42' // Source: ..\\plugins\\vue-swiper.js (mode: 'client')
 import nuxt_plugin_bannerAnime_0f31f396 from 'nuxt_plugin_bannerAnime_0f31f396' // Source: ..\\plugins\\index\\bannerAnime (mode: 'client')
 import nuxt_plugin_swiperbundle_776b12b6 from 'nuxt_plugin_swiperbundle_776b12b6' // Source: ..\\plugins\\swiper-bundle.min (mode: 'client')
@@ -179,8 +179,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_3ec15a6e === 'function') {
-    await nuxt_plugin_plugin_3ec15a6e(app.context, inject)
+  if (typeof nuxt_plugin_plugin_0f2614e6 === 'function') {
+    await nuxt_plugin_plugin_0f2614e6(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_vueswiper_6a7b4f42 === 'function') {

@@ -10,12 +10,12 @@
             </div>
         </div>
         <div class="navBar">
-            <div :class="`navBar__${index + 1}`" v-for="(item, index) in 2" :key="'navBar' + index" data-anime>
+            <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
+                <div :class="`navBar__${index + 1}-anime`"></div>
                 <a href="/">
-                    <!-- <div :class="`navBar__${index + 1}-anime navBarAnime`">
-                        <div :class="`navBar__${index + 1}-anime-obj`"></div>
-                    </div> -->
-                    
+                    <span :class="`navBar__${index + 1}-anime navBarAnime`">
+                        {{ item }}
+                    </span>
                 </a>
             </div>
         </div>
@@ -31,6 +31,16 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            navItemList:[
+                '首頁',
+                '照顧現場',
+                '一看就懂長照2.0',
+                '長照地圖'
+            ]
+        }
+    },
     methods: {
         navBarOpen() {
             this.$emit('navBarOpen')

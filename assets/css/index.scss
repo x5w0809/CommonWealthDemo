@@ -80,29 +80,53 @@ body {
             }
         }
     }
-    .reserve {
-        &-anime {
-            position: absolute;
-            $w: 185px;
-            $h: 65px;
-            @include getImgBoxSize($w, $h, $headerWidth_pc);
-            left: #{math.div(1581px, $headerWidth_pc) * 100%};
-            top: #{math.div(69px, $headerHeight_pc) * 100%};
-            @include mob-width {
-                display: none;
-            }
-            &-obj {
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                background-size: 100%;
-                background-repeat: no-repeat;
-                background-position: center;
-                // background-image: url('~/static/image/pc/main/reserveBtn1.png');
-                &:hover{
-                    // background-image: url('~/static/image/pc/main/reserveBtn2.png');
+    .logo {
+        display: flex;
+        @for $i from 1 through 4 {
+            .logo__#{$i} {
+                &-anime {
+                    @if $i == 1 {
+                        position: absolute;
+                        $w: 112px;
+                        $h: 40px;
+                        @include getImgBoxSize($w, $h, $headerWidth_pc);
+                        left: #{math.div(40px, $headerWidth_pc) * 100%};
+                        top: 50%;
+                        transform: translateY(-50%);
+                        @include mob-width {
+                            display: none;
+                        }
+                    } @else if $i == 2 {
+                        position: absolute;
+                        $w: 146px;
+                        $h: 34px;
+                        @include getImgBoxSize($w, $h, $headerWidth_pc);
+                        left: #{math.div(176px, $headerWidth_pc) * 100%};
+                        top: 50%;
+                        transform: translateY(-50%);
+                        @include mob-width {
+                            display: none;
+                        }
+                    }
+                    &-obj {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        @if $i == 1 {
+                            background-image: url('~/static/image/pc/logo1.svg');
+                            @include mob-width {
+                            }
+                        } @else if $i == 2 {
+                            background-image: url('~/static/image/pc/logo2.svg');
+                            @include mob-width {
+                            }
+                        }
+                    }
                 }
             }
         }

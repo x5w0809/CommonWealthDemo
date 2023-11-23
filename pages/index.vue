@@ -5,7 +5,7 @@
         <div class="container">
             <section class="banner">
                 <div class="bannerTitle">
-                    <h2 class="title">專業運輸、五星感受。</h2>
+                    <h2 class="title">專業運輸 。</h2>
                 </div>
                 <div class="shadow">
                     <div class="shadow-anime">

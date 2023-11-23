@@ -25,6 +25,7 @@
     "embla-carousel": "^6.0.0",
     "gsap": "^3.8.0",
     "jquery": "^3.5.1",
+    "locomotive-scroll": "^4.1.4",
     "nuxt": "^2.15.7",
     "nuxt-swiper": "^1.2.0",
     "nuxt-user-agent": "^1.2.2",

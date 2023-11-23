@@ -1,67 +1,55 @@
 <template>
-    <div id="main">
+    <div id="main" >
         <Header @navBarOpen="navBarOpen = true" />
         <right-side-bar />
-        <div class="container">
+        <div class="container" data-scroll-container>
             <section class="banner">
-                <div class="bannerTitle">
-                    <h2 class="title">專業運輸 。</h2>
-                </div>
-                <div class="shadow">
-                    <div class="shadow-anime">
-                        <div class="shadow-anime-obj"></div>
-                    </div>
-                </div>
-                <div class="car">
-                    <div class="car-anime">
-                        <div class="car-anime-obj"></div>
-                    </div>
-                </div>
-                <div class="bgIcon">
-                    <div :class="`bgIcon__${index + 1}`" v-for="(item, index) in 2" :key="'bgIcon' + index" data-anime>
-                        <div :class="`bgIcon__${index + 1}-anime bgIconAnime`">
-                            <div :class="`bgIcon__${index + 1}-anime-obj`"></div>
+                <div class="title">
+                    <div :class="`title__${index + 1}`" v-for="(item, index) in 6" :key="'title' + index" data-anime>
+                        <div :class="`title__${index + 1}-anime titleAnime`">
+                            <div :class="`title__${index + 1}-anime-obj`"></div>
                         </div>
                     </div>
                 </div>
-                <div class="bgBlur">
-                    <div class="bgBlur-anime">
-                        <div class="bgBlur-anime-obj"></div>
+                <div class="scrollArrow">
+                    <div class="scrollArrow-anime scrollArrowAnime">
+                        <div class="scrollArrow-anime-obj"></div>
                     </div>
                 </div>
-                <div class="subbar">
-                    <div class="subbar-anime">
-                        <div class="subbar-anime-obj"></div>
-                    </div>
-                </div>
-                <div class="subtitle">
-                    <div class="subtitle-anime">
-                        <div class="subtitle-anime-obj"></div>
-                    </div>
-                </div>
-                <div class="readmore">
-                    <a href="/aboutUs">
-                        <div class="readmore-anime">
-                            <div class="readmore-anime-obj"></div>
+                <div class="height"></div>
+            </section>
+            <section class="longTeam">
+                <div class="picture">
+                    <div :class="`picture__${index + 1}`" v-for="(item, index) in 2" :key="'picture' + index" data-anime>
+                        <div :class="`picture__${index + 1}-anime pictureAnime`">
+                            <div :class="`picture__${index + 1}-anime-obj`"></div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="reserve">
-                    <a href="/">
-                        <div class="reserve-anime">
-                            <div class="reserve-anime-obj"></div>
-                        </div>
-                    </a>
+                <div class="subTitle">
+                    <div class="subTitle-anime subTitleAnime">
+                        <div class="subTitle-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="txtContain">
+                    <span class="title">長照2.0，<br />讓照顧的路上有專業相挺</span>
+                    <textarea class="txtBox" readonly>台灣走向超高齡社會，速度比想像中還要快又急，隨著人口老化加速，未來需要照顧年長父母的青壯人口，只會增加，不會減少。
+老年人壽命的延長，也表示照顧的時間會愈來愈長；甚至是在自己退休之後，仍須持續照顧長輩。
+「上有高堂，下有嗷嗷待哺」，三明治世代所面臨的困境，才是最需要協助的一群人。
+
+面對長照，經濟協助外，對「照顧者」提供專業協助更是關鍵！
+                    </textarea>
                 </div>
                 <div class="height"></div>
             </section>
         </div>
-        <Footer />
+        <!-- <Footer /> -->
         <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" />
     </div>
 </template>
 
 <script>
+import LocomotiveScroll from 'locomotive-scroll';
 import rightSideBar from '../components/rightSideBar.vue'
 export default {
     components: { rightSideBar },
@@ -98,16 +86,20 @@ export default {
     },
     mounted() {
         this.isDevice()
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true
+        });
         // window.bannerAnime()
         // window.scrollAnime(this.isMobile)
         // addEventListener('resize',()=>{
         //     this.isDevice()
         // })
-        
+
     },
     methods: {
-        isDevice (){
-            if(window.innerWidth < 768){
+        isDevice() {
+            if (window.innerWidth < 768) {
                 this.isMobile = true
             } else {
                 this.isMobile = false

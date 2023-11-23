@@ -11,7 +11,7 @@
         </div>
         <div class="navBar">
             <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
-                <div :class="`navBar__${index + 1}-anime`"></div>
+                <div :class="`navBar__${index + 1}-hr`"></div>
                 <a href="/">
                     <span :class="`navBar__${index + 1}-anime navBarAnime`">
                         {{ item }}

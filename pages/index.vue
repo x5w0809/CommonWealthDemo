@@ -40,7 +40,33 @@
 面對長照，經濟協助外，對「照顧者」提供專業協助更是關鍵！
                     </textarea>
                 </div>
+                <div class="longTeamLine">
+                    <div class="longTeamLine-anime longTeamLineAnime">
+                        <div class="longTeamLine-anime-obj"></div>
+                    </div>
+                </div>
                 <div class="height"></div>
+            </section>
+            <section class="takeCare">
+                <div class="title">
+                    <div class="title-anime titleAnime">
+                        <div class="title-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="height"></div>
+            </section>
+            <section class="takeCareSwip">
+                <swiper class="swiper" :options="swiperOption">
+                    <swiper-slide :class="`takeCareImg__${index + 1} takeCareImgBox`" v-for="(item, index) in takeCareImgList" :key="'takeCareImg' + index" data-anime>
+                        <div :class="`takeCareImg__${index + 1}-anime takeCareImgAnime`">
+                            <a :href="item.url" target="_blank">
+                                <img class="takeCareImg" :src="item.image" />
+                            </a>
+                        </div>
+                    </swiper-slide>
+                    <div class="swiper-button-prev" slot="button-prev"></div>
+                    <div class="swiper-button-next" slot="button-next"></div>
+                </swiper>
             </section>
         </div>
         <!-- <Footer /> -->
@@ -51,6 +77,7 @@
 <script>
 import LocomotiveScroll from 'locomotive-scroll';
 import rightSideBar from '../components/rightSideBar.vue'
+import Swiper from 'swiper';
 export default {
     components: { rightSideBar },
     name: 'IndexPage',
@@ -58,44 +85,70 @@ export default {
         return {
             navBarOpen: false,
             swiperOption: {
-                autoplay: 2000,
+                autoplay: 1500,
                 // speed: 300,
                 loop: false,
-                slidesPerView: 3,
-                spaceBetween: 0,
-                breakpoints: {
-                    1024: {
-                        slidesPerView: 2,
-                    },
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 100,
-                    },
-                    375: {
-                        slidesPerView: 1,
-                        spaceBetween: 100,
-                    },
-                },
+                slidesPerView: 1.5,
+                spaceBetween: -1,
+                // breakpoints: {
+                //     1024: {
+                //         slidesPerView: 2,
+                //     },
+                //     768: {
+                //         slidesPerView: 1,
+                //         spaceBetween: 100,
+                //     },
+                //     375: {
+                //         slidesPerView: 1,
+                //         spaceBetween: 100,
+                //     },
+                // },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
             },
+            takeCareImgList:[
+                {
+                    url:'https://www.cw.com.tw/article/5125049',
+                    image: require('@/static/image/pc/takeCareImg1.png')
+                },
+                {
+                    url:'https://www.cw.com.tw/article/5124631',
+                    image: require('@/static/image/pc/takeCareImg2.png')
+                },
+                {
+                    url:'https://www.cw.com.tw/article/5123858',
+                    image: require('@/static/image/pc/takeCareImg3.png')
+                }
+            ],
             isMobile: false,
         }
     },
     mounted() {
         this.isDevice()
-        const scroll = new LocomotiveScroll({
-            el: document.querySelector('[data-scroll-container]'),
-            smooth: true
-        });
+        const self =this
+        
+        // self.$nextTick(function () {
+            
+        //     //var mySwiper = new Swiper('.swiper',{})
+        //     const scroll = new LocomotiveScroll({
+        //         el: document.querySelector('[data-scroll-container]'),
+        //         smooth: true
+        //     }); 
+        // },1000)
+        setTimeout(()=>{
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true
+            });
+        },50)
         // window.bannerAnime()
         // window.scrollAnime(this.isMobile)
         // addEventListener('resize',()=>{
         //     this.isDevice()
         // })
-
+        
     },
     methods: {
         isDevice() {

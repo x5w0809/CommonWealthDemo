@@ -6,11 +6,11 @@ import NuxtError from './components/nuxt-error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '../assets/css/index.scss'
+import '..\\assets\\css\\index.scss'
 
-import '../node_modules/swiper/swiper-bundle.css'
+import '..\\node_modules\\swiper\\swiper-bundle.css'
 
-import '../assets/css/swiper-bundle.min.css'
+import '..\\assets\\css\\swiper-bundle.min.css'
 
 import _6f6c098b from './layouts/default.vue'
 

@@ -60,13 +60,107 @@
                     <swiper-slide :class="`takeCareImg__${index + 1} takeCareImgBox`" v-for="(item, index) in takeCareImgList" :key="'takeCareImg' + index" data-anime>
                         <div :class="`takeCareImg__${index + 1}-anime takeCareImgAnime`">
                             <a :href="item.url" target="_blank">
+                                <div class="takeCareTitle">
+                                    <div class="takeCareTitle-anime">
+                                        <div class="takeCareTitle-anime-obj"></div>
+                                    </div>
+                                </div>
                                 <img class="takeCareImg" :src="item.image" />
                             </a>
                         </div>
                     </swiper-slide>
                     <div class="swiper-button-prev" slot="button-prev"></div>
                     <div class="swiper-button-next" slot="button-next"></div>
+                    <div class="swiper-pagination" slot="pagination"></div>
                 </swiper>
+            </section>
+            <section class="fiveMin">
+                <div class="bgCircle">
+                    <div class="bgCircle-anime bgCircleAnime">
+                    </div>
+                </div>
+                <div class="title">
+                    <div class="title-anime titleAnime">
+                        <div class="title-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="subTitle">
+                    <div class="subTitle-anime subTitleAnime">
+                        <div class="subTitle-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="intro">
+                    <div :class="`intro__${index + 1}`" v-for="(item, index) in introList" :key="'intro' + index" data-anime>
+                        <div :class="`intro__${index + 1}-anime introAnime`">
+                            <div :class="`intro__${index + 1}-anime-box`">
+                                <div class="circle">
+                                    <div class="line"></div>
+                                </div>
+                                <div class="picture">
+                                    <img :src="item.image" alt="">
+                                </div>
+                            </div>
+                            <div :class="`intro__${index + 1}-anime-title`">{{ item.title }}</div>
+                            <div :class="`intro__${index + 1}-anime-des`">
+                                <img :src="item.des" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomLine">
+                    <div class="bottomLine-anime bottomLineAnime">
+                        <div class="bottomLine-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="moreBtn">
+                    <div class="moreBtn-anime moreBtnAnime">
+                        <div class="moreBtn-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="moreBtn">
+                    <div class="moreBtn-anime moreBtnAnime">
+                        <div class="moreBtn-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="mapTitle">
+                    <div class="mapTitle-anime mapTitleAnime">
+                        <div class="mapTitle-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="height"></div>
+            </section>
+            <section class="map">
+                <div class="mapBg">
+                    <div class="mapBg-anime mapBgAnime">
+                        <div class="mapBg-anime-obj">
+                            <div class="mapBg-anime-obj-mask"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mask">
+                    <div class="mask-anime maskAnime">
+                        <div class="mask-anime-obj"></div>
+                    </div>
+                </div>
+                <!-- <div class="intro">
+                    <div :class="`intro__${index + 1}`" v-for="(item, index) in introList" :key="'intro' + index" data-anime>
+                        <div :class="`intro__${index + 1}-anime introAnime`">
+                            <div :class="`intro__${index + 1}-anime-box`">
+                                <div class="circle">
+                                    <div class="line"></div>
+                                </div>
+                                <div class="picture">
+                                    <img :src="item.image" alt="">
+                                </div>
+                            </div>
+                            <div :class="`intro__${index + 1}-anime-title`">{{ item.title }}</div>
+                            <div :class="`intro__${index + 1}-anime-des`">
+                                <img :src="item.des" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="height"></div>
             </section>
         </div>
         <!-- <Footer /> -->
@@ -87,9 +181,11 @@ export default {
             swiperOption: {
                 autoplay: 1500,
                 // speed: 300,
-                loop: false,
-                slidesPerView: 1.5,
-                spaceBetween: -1,
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                width: 955,
+                centeredSlides:true,
                 // breakpoints: {
                 //     1024: {
                 //         slidesPerView: 2,
@@ -103,10 +199,16 @@ export default {
                 //         spaceBetween: 100,
                 //     },
                 // },
+                //direction:'horizontal',
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
+                pagination:{
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    type: 'bullets',
+                }
             },
             takeCareImgList:[
                 {
@@ -121,6 +223,23 @@ export default {
                     url:'https://www.cw.com.tw/article/5123858',
                     image: require('@/static/image/pc/takeCareImg3.png')
                 }
+            ],
+            introList:[
+                {
+                    image: require('@/static/image/pc/Ellipse-14.png'),
+                    title:'服務對象',
+                    des: require('@/static/image/pc/introDes1.png'),
+                },
+                {
+                    image: require('@/static/image/pc/Ellipse-11.png'),
+                    title:'申請流程',
+                    des: require('@/static/image/pc/introDes2.png'),
+                },
+                {
+                    image: require('@/static/image/pc/Ellipse-18.png'),
+                    title:'服務內容',
+                    des: require('@/static/image/pc/introDes3.png'),
+                },
             ],
             isMobile: false,
         }
@@ -142,7 +261,7 @@ export default {
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
-        },50)
+        },100)
         // window.bannerAnime()
         // window.scrollAnime(this.isMobile)
         // addEventListener('resize',()=>{

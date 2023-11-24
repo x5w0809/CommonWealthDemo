@@ -469,6 +469,376 @@ body {
                 }
             }
         }
+        .swiper-pagination{
+            left: 180px;
+            bottom: 59px;
+        }
+        .swiper-pagination-bullet{
+            width: 8px;
+            height: 8px;
+            margin: 0 6px;
+            border: 1px solid #CADEDF;
+            border-radius: 50%;
+        }
+        .swiper-pagination-bullets{
+            width: unset;
+        }
+        .swiper-pagination-bullet-active{
+            background: #EC6C00;
+        }
+        .swiper-button-prev {
+            position: absolute;
+            top: 288px;
+            left: 20.8vw;
+            width: 64px;
+            height: 64px;
+            background-size: 100%;
+            transform: rotateY(180deg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('~/static/image/pc/icon--arrow-3.png');
+            &::after{
+                content: '';
+            }
+        }
+        
+        .swiper-button-next {
+            position: absolute;
+            top: 288px;
+            right: 20.8vw;
+            width: 64px;
+            height: 64px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('~/static/image/pc/icon--arrow-3.png');
+            &::after{
+                content: '';
+            }
+        }
+    }
+}
+.fiveMin{
+    position: relative;
+    width: 100%;
+    $boxWidth_pc: 1440px;
+    $boxHeight_pc: 1056px;
+    $boxWidth_mb: 375px;
+    $boxHeight_mb: 60px;
+    //background: url('~/static/image/pc/BG.jpg') no-repeat;
+    background-size: 100%;
+    > .height {
+        display: block;
+        padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
+        @include mob-width {
+            padding-bottom: #{math.div($boxHeight_mb, $boxWidth_mb) * 100%};
+        }
+    }
+    .bgCircle{
+        &-anime {
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: #{math.div(320px, $boxHeight_pc) * 100%};
+            $w: 1300px;
+            $h: 1300px;
+            border-radius: 50%;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            background-color: #f4f8f9;
+        }
+    }
+    .title{
+        &-anime {
+            position: absolute;
+            left: #{math.div(267px, $boxWidth_pc) * 100%};
+            top: #{math.div(120px, $boxHeight_pc) * 100%};
+            $w: 312px;
+            $h: 104px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/fiveMinTitle.png');    
+            }
+        }
+    }
+    .subTitle{
+        &-anime {
+            position: absolute;
+            left: #{math.div(220px, $boxWidth_pc) * 100%};
+            top: #{math.div(120px, $boxHeight_pc) * 100%};
+            $w: 23px;
+            $h: 180px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/sub-title2.png');    
+            }
+        }
+    }
+    .intro{
+        @for $i from 1 through 3 {
+            .intro__#{$i} {
+                &-anime {
+                    position: absolute;
+                    @if $i == 1 {
+                        width: 16vw;
+                        left: #{math.div(300px, $boxWidth_pc) * 100%};
+                        top: #{math.div(298px, $boxHeight_pc) * 100%};
+                        @include mob-width {
+                        }
+                    } @else if $i == 2 {
+                        left: #{math.div(605px, $boxWidth_pc) * 100%};
+                        top: #{math.div(258px, $boxHeight_pc) * 100%};
+                        width: 16vw;
+                        @include mob-width {
+                        }
+                    } @else if $i == 3 {
+                        left: #{math.div(910px, $boxWidth_pc) * 100%};
+                        top: #{math.div(298px, $boxHeight_pc) * 100%};
+                        width: 16vw;
+                        @include mob-width {
+                            display: none;
+                        }
+                    }
+                    &-box{
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        .circle{
+                            position: relative;
+                            width: 15vw;
+                            height: 15vw;
+                            top: 0;
+                            border-radius: 50%;
+                            border: 2px solid #008088;
+                            .line{
+                                position: absolute;
+                                width: 0.83vw;
+                                height: 1.98vw;
+                                top: 3.58vw;
+                                left: 0.15vw;
+                                background-size: 100%;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-image: url('~/static/image/pc/Ellipse-16.png');
+                            }
+                        }
+                        @if $i == 1 {
+                        } @else if $i == 2 {
+                            .circle{
+                                .line{
+                                    left: 10vw;
+                                    top: -0.47vw;
+                                    transform: rotate(90deg);
+                                }
+                            }
+                        } @else if $i == 3 {
+                            .circle{
+                                .line{
+                                    left: 6.2vw;
+                                    top: -1vw;
+                                    transform: rotate(60deg);
+                                }
+                            }
+                        }
+                        .picture{
+                            position: absolute;
+                            transform: translate(-50%, -50%);
+                            top: 50%;
+                            left: 50%;
+                            width: 13.75vw;
+                            img{
+                                width: 100%;
+                                display: block;
+                            }
+                        }
+                        @if $i == 1 {
+                            
+                        } @else if $i == 2 {
+
+                        } @else if $i == 3 {
+                            
+                        }
+
+                    }
+                    &-title{
+                        margin: auto;
+                        margin-top: 1.111vw;
+                        font-family: Noto Sans TC;
+                        font-size: 1.4vw;
+                        font-weight: 700;
+                        line-height: 2vw;
+                        letter-spacing: 0.1em;
+                        text-align: left;
+                        color: #008088;
+                        @if $i == 2 {
+                            width: 85%;
+                        }
+                    }
+                    &-des{
+                        margin: auto;
+                        width: 100%;
+                        margin-top: 0.3vw;
+                        @if $i == 2 {
+                            width: 85%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .bottomLine{
+        &-anime {
+            position: absolute;
+            left: #{math.div(300px, $boxWidth_pc) * 100%};
+            top: #{math.div(764px, $boxHeight_pc) * 100%};
+            $w: 430px;
+            $h: 36px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/line.svg');    
+            }
+        }
+    }
+    .moreBtn{
+        &-anime {
+            position: absolute;
+            left: #{math.div(810px, $boxWidth_pc) * 100%};
+            top: #{math.div(700px, $boxHeight_pc) * 100%};
+            $w: 330px;
+            $h: 64px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/BTN.png');    
+            }
+        }
+    }
+    .mapTitle{
+        &-anime {
+            position: absolute;
+            left: #{math.div(220px, $boxWidth_pc) * 100%};
+            top: #{math.div(920px, $boxHeight_pc) * 100%};
+            $w: 279px;
+            $h: 104px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/mapTitle.png');    
+            }
+        }
+    }
+}
+.map{
+    position: relative;
+    width: 100%;
+    $boxWidth_pc: 1440px;
+    $boxHeight_pc: 960px;
+    $boxWidth_mb: 375px;
+    $boxHeight_mb: 60px;
+    //background: url('~/static/image/pc/BG.jpg') no-repeat;
+    background-size: 100%;
+    > .height {
+        display: block;
+        padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
+        @include mob-width {
+            padding-bottom: #{math.div($boxHeight_mb, $boxWidth_mb) * 100%};
+        }
+    }
+    .mapBg{
+        &-anime {
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 0;
+            $w: 1360px;
+            $h: 800px;
+            border-radius: 0 40px 0px 40px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                border-radius: 0 40px 0px 40px;
+                border: 2px solid #008088;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/mapImage.png');
+                &-mask{
+                    position: absolute;
+                    left: -2px;
+                    top: -2px;
+                    right: -2px;
+                    bottom: -2px;
+                    border-radius: 0 40px 0px 40px;
+                    background-color: #ffffff;
+                    opacity: 0.85;
+                }  
+            }
+        }
+    }
+    .mask{
+        &-anime {
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: #{math.div(32px, $boxHeight_pc) * 100%};
+            $w: 1300px;
+            $h: 740px;
+            
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: #ffffff; 
+                border-radius: 40px;   
+            }
+        }
     }
 }
 // #modelPage{

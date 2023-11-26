@@ -1,4 +1,5 @@
 @import 'locomotive-scroll/dist/locomotive-scroll.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -112,9 +113,57 @@ body {
                     color: #333333;    
                 }
                 &-anime {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    letter-spacing: 0.1em;
+                    text-align: left;
+                    position: relative;
+                    transition: all 0.2s linear;
+                    &::after{
+                        transition: all 0.2s linear;
+                        content: '';
+                        position: absolute;
+                        width: 0%;
+                        height: 2px;
+                        margin-top: 25px;
+                        left: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url('~/static/image/pc/headerLine.svg');
+                    }
+                    &:hover{
+                        color: #EC6C00;
+                        &::after{
+                            width: 100%;
+                        }
+                    }
                     
                 }
             }
+        }
+        .navBarAnime{
+            cursor: pointer;
+        }
+    }
+}
+#footer{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #CADEDF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .footerContain{
+        p{
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #707070;
         }
     }
 }
@@ -139,6 +188,7 @@ body {
             .title__#{$i} {
                 &-anime {
                     position: absolute;
+                    opacity: 0;
                     @if $i == 1 {
                         left: #{math.div(758px, $boxWidth_pc) * 100%};
                         top: #{math.div(224px, $boxHeight_pc) * 100%};
@@ -233,12 +283,17 @@ body {
     }
     .scrollArrow{
         &-anime {
+            cursor: pointer;
             position: absolute;
             left: #{math.div(220px, $boxWidth_pc) * 100%};
             top: #{math.div(735px, $boxHeight_pc) * 100%};
             $w: 42px;
             $h: 85px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            animation: scrollAnime 3s ease-in-out infinite reverse;
+            &:hover{
+                animation: none;
+            }
             &-obj{
                 position: absolute;
                 left: 0;
@@ -250,6 +305,17 @@ body {
                 background-position: center;
                 background-image: url('~/static/image/pc/icon--scroll.svg');
             }
+        }
+    }
+    @keyframes scrollAnime {
+        0%{
+            transform:translateY(0px) ;
+        }
+        50%{
+            transform:translateY(30px) ;
+        }
+        100%{
+            transform:translateY(0px) ;
         }
     }
 }
@@ -638,8 +704,12 @@ body {
                             }
                         }
                         @if $i == 1 {
+                            .circle{
+                                transition:all 2s ease-in-out;
+                            }
                         } @else if $i == 2 {
                             .circle{
+                                transition:all 2s ease-in-out;
                                 .line{
                                     left: 10vw;
                                     top: -0.47vw;
@@ -648,6 +718,7 @@ body {
                             }
                         } @else if $i == 3 {
                             .circle{
+                                transition:all 2s ease-in-out;
                                 .line{
                                     left: 6.2vw;
                                     top: -1vw;
@@ -696,6 +767,10 @@ body {
                         @if $i == 2 {
                             width: 85%;
                         }
+                        img{
+                            width: 100%;
+                            display: block;
+                        }
                     }
                 }
             }
@@ -730,6 +805,16 @@ body {
             $w: 330px;
             $h: 64px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            border-radius: 60px;
+            overflow: hidden;
+            transition:all  0.6s  ease-in-out;
+            &:hover{
+                .btnIcon{
+                    .btnIcon-anime{
+                        right: 0;
+                    }
+                }
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -740,6 +825,32 @@ body {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-image: url('~/static/image/pc/BTN.png');    
+            }
+            .btnIcon{
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                overflow: hidden;
+                .btnIcon-anime{
+                    position: absolute;
+                    right:23vw;
+                    top: 0;
+                    width: 4.44vw;
+                    height: 4.44vw;
+                    &-obj {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url('~/static/image/pc/btnIcon.png');
+                    }
+                }
             }
         }
     }
@@ -840,2142 +951,269 @@ body {
             }
         }
     }
+    .introImg1{
+        @for $i from 1 through 4 {
+            .introImg1__#{$i} {
+                &-anime {
+                    position: absolute;
+                    @if $i == 1 {
+                        left: #{math.div(319.5px, $boxWidth_pc) * 100%};
+                        top: #{math.div(193px, $boxHeight_pc) * 100%};
+                        $w: 105px;
+                        $h: 40px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                        }
+                    } @else if $i == 2 {
+                        left: #{math.div(433.5px, $boxWidth_pc) * 100%};
+                        top: #{math.div(193px, $boxHeight_pc) * 100%};
+                        $w: 59px;
+                        $h: 40px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                        }
+                    } @else if $i == 3 {
+                        left: #{math.div(339.5px, $boxWidth_pc) * 100%};
+                        top: #{math.div(241px, $boxHeight_pc) * 100%};
+                        $w: 171px;
+                        $h: 40px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                            display: none;
+                        }
+                    } @else if $i == 4 {
+                        left: #{math.div(461.5px, $boxWidth_pc) * 100%};
+                        top: #{math.div(251px, $boxHeight_pc) * 100%};
+                        $w: 33px;
+                        $h: 53px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                            display: none;
+                        }
+                    }
+                    &-obj {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        @if $i == 1 {
+                            background-image: url('~/static/image/pc/Rectangle-9.png');
+                            @include mob-width {
+                            }
+                        } @else if $i == 2 {
+                            background-image: url('~/static/image/pc/Rectangle-12.png');
+                            @include mob-width {
+                            }
+                        } @else if $i == 3 {
+                            background-image: url('~/static/image/pc/Rectangle-13.png');
+                            @include mob-width {
+                            }
+                        } @else if $i == 4 {
+                            background-image: url('~/static/image/pc/Layer_1.png');
+                            animation: handAnime 2.5s ease-in-out infinite reverse;
+                            @include mob-width {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @keyframes handAnime {
+        0%{
+            transform:translateX(0px) ;
+        }
+        50%{
+            transform:translateX(-30px) ;
+        }
+        100%{
+            transform:translateX(0px) ;
+        }
+    }
+    .introImg2{
+        @for $i from 1 through 2 {
+            .introImg2__#{$i} {
+                &-anime {
+                    position: absolute;
+                    @if $i == 1 {
+                        left: #{math.div(655px, $boxWidth_pc) * 100%};
+                        top: #{math.div(234px, $boxHeight_pc) * 100%};
+                        $w: 130px;
+                        $h: 130px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                        }
+                    } @else if $i == 2 {
+                        left: #{math.div(707px, $boxWidth_pc) * 100%};
+                        top: #{math.div(283px, $boxHeight_pc) * 100%};
+                        $w: 26px;
+                        $h: 33px;
+                        @include getImgBoxSize($w, $h, $boxWidth_pc);
+                        @include mob-width {
+                        }
+                    }
+                    &-obj {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        @if $i == 1 {
+                            background-image: url('~/static/image/pc/Ellipse-19.png');
+                            @include mob-width {
+                            }
+                        } @else if $i == 2 {
+                            background-image: url('~/static/image/pc/Group-1.png');
+                            @include mob-width {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .introImg3{
+        &-anime {
+            position: absolute;
+            left: #{math.div(922.5px, $boxWidth_pc) * 100%};
+            top: #{math.div(296px, $boxHeight_pc) * 100%};
+            $w: 205px;
+            $h: 111px;
+            @include getImgBoxSize($w, $h, $boxWidth_pc);
+                
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/icon.png');
+            }
+        }
+    }
+    .intro{
+        @for $i from 1 through 3 {
+            .intro__#{$i} {
+                &-anime {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    @if $i == 1 {
+                        left: #{math.div(300px, $boxWidth_pc) * 100%};
+                        top: #{math.div(326px, $boxHeight_pc) * 100%};
+                        width: 16vw;
+                        @include mob-width {
+                        }
+                    } @else if $i == 2 {
+                        left: #{math.div(605px, $boxWidth_pc) * 100%};
+                        top: #{math.div(384px, $boxHeight_pc) * 100%};
+                        width: 16vw;
+                        @include mob-width {
+                        }
+                    } @else if $i == 3 {
+                        left: #{math.div(910px, $boxWidth_pc) * 100%};
+                        top: #{math.div(423px, $boxHeight_pc) * 100%};
+                        width: 16vw;
+                        @include mob-width {
+                            display: none;
+                        }
+                    }
+                    &-title {
+                        font-family: 'Lato', sans-serif;
+                        font-size: 1vw;
+                        font-weight: 700;
+                        line-height: 20px;
+                        letter-spacing: 0.1em;
+                        text-align: left;
+                        color: #EC6C00;
+                        @if $i == 1 {
+                            @include mob-width {
+                            }
+                        } @else if $i == 2 {
+                            @include mob-width {
+                            }
+                        } @else if $i == 3 {
+                            @include mob-width {
+                            }
+                        }
+                    }
+                    &-des {
+                        font-size: 1.11vw;
+                        font-weight: 500;
+                        line-height: 1.8vw;
+                        letter-spacing: 0.1em;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+    .mapBtn{
+        &-anime {
+            position: absolute;
+                left: #{math.div(555px, $boxWidth_pc) * 100%};
+                top: #{math.div(543px, $boxHeight_pc) * 100%};
+                $w: 330px;
+                $h: 64px;
+                @include getImgBoxSize($w, $h, $boxWidth_pc);
+                border-radius: 60px;
+                overflow: hidden;
+                transition:all  0.6s  ease-in-out;
+                &:hover{
+                    .btnIcon{
+                        .btnIcon-anime{
+                            right: 0;
+                        }
+                    }
+                }
+            &-obj {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url('~/static/image/pc/mapBtn.png');
+            }
+            .btnIcon{
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                overflow: hidden;
+                .btnIcon-anime{
+                    position: absolute;
+                    right:23vw;
+                    top: 0;
+                    width: 4.44vw;
+                    height: 4.44vw;
+                    &-obj {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url('~/static/image/pc/btnIcon.png');
+                    }
+                }
+            }
+            
+        }
+    }
 }
-// #modelPage{
-//     .modelContain{
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 2050px;
-//         background: #000000;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgIcon{
-//             @for $i from 1 through 6 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         position: absolute;
-//                         @if $i == 1 {
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(386px, $boxHeight_pc) * 100%};
-//                             $w: 1920px;
-//                             $h: 1440px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                             }
-//                         } @else if $i == 2 {
-//                             display: none;
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 3 {
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(185px, $boxHeight_pc) * 100%};
-//                             $w: 355px;
-//                             $h: 565px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 4 {
-//                             left: #{math.div(1057px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(260px, $boxHeight_pc) * 100%};
-//                             $w: 151px;
-//                             $h: 151px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 5 {
-//                             left: #{math.div(1083px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(1056px, $boxHeight_pc) * 100%};
-//                             $w: 679px;
-//                             $h: 910px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 6 {
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(1820px, $boxHeight_pc) * 100%};
-//                             $w: 210px;
-//                             $h: 270px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/newsBg.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/main/invalid-name_7.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 3 {
-//                                 background-image: url('~/static/image/pc/main/newsBgIcon1.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 4 {
-//                                 background-image: url('~/static/image/pc/main/group-23.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 5 {
-//                                 background-image: url('~/static/image/pc/main/modelBgIcon.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 6 {
-//                                 background-image: url('~/static/image/pc/main/newsBgIcon3.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(306px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 4.58vw;
-//                     font-weight: 900;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #9dff43;
-//                 }
-//             }
-//         }
-//         .subTitle{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(437px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 2.4vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.9vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .social {
-//             @for $i from 1 through 4 {
-//                 .social__#{$i} {
-//                     &-anime {
-//                         cursor: pointer;
-//                         position: absolute;
-//                         $w: 38px;
-//                         $h: 38px;
-//                         left: #{math.div(1824px, $boxWidth_pc) * 100%};
-//                         @if $i == 1 {
-//                             top: #{math.div(329px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                             }
-//                         } @else if $i == 2 {
-//                             top: #{math.div(423px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 3 {
-//                             top: #{math.div(513px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         } @else if $i == 4 {
-//                             $w: 42px;
-//                             $h: 209px;
-//                             top: #{math.div(664px, $boxHeight_pc) * 100%};
-//                             // left: #{math.div(1832px, $boxWidth_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/ig-icon1.png');
-//                                 &:hover{
-//                                     background-image: url('~/static/image/pc/main/ig-icon2.png');
-//                                 }
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/main/facebook-icon1.png');
-//                                 &:hover{
-//                                     background-image: url('~/static/image/pc/main/facebook-icon2.png');
-//                                 }
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 3 {
-//                                 background-image: url('~/static/image/pc/main/tik-tok-icon1.png');
-//                                 &:hover{
-//                                     background-image: url('~/static/image/pc/main/tik-tok-icon2.png');
-//                                 }
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 4 {
-//                                 background-image: url('~/static/image/pc/main/scrollicon.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .des{
-//             width: 100%;
-//             position: absolute;
-//             display: flex;
-//             justify-content: center;
-//             top: #{math.div(611px, $boxHeight_pc) * 100%};
-//             .desWrap{
-//                 position: relative;
-//                 display: flex;
-//                 width: 90%;
-//                 margin-left: -2.5vw;
-//                 .desImg{
-//                     width: 50%;
-//                     margin-left: 2.5vw;
-//                     img{
-//                         width: 100%;
-//                     }
-//                 }
-//                 .desText{
-//                     position: relative;
-//                     width: 50%;
-//                     margin-left: 2.5vw;
-//                     display: flex;
-//                     flex-direction: column;
-//                     .desTitle{
-//                         margin: 0;
-//                         font-size: 1.875vw;
-//                         letter-spacing: 0.28vw;
-//                         color: #a1ff4b;
-//                         font-weight: bold;
-//                         font-stretch: normal;
-//                         font-style: normal;
-//                         line-height: normal;
-//                         overflow: hidden;
-//                         text-overflow: ellipsis;
-//                         white-space: nowrap;
-//                     }
-//                     .desTxt{
-//                         list-style-type: none;
-//                         //margin-left:2vw;
-//                         margin-top: 2.9vw;
-//                         width: 90%;
-//                         height: 100%;
-//                         font-size: 1.4vw;
-//                         letter-spacing: 0.2vw;
-//                         background-color:  rgb(0 0 0 / 0%);
-//                         color: #ffffff;
-//                         border: none;
-//                         resize: none;
-//                         font-weight: normal;
-//                         font-stretch: normal;
-//                         font-style: normal;
-//                         line-height: normal;
-//                         li{
-//                             line-height: 1.68;
-//                             &::before{
-//                                 content:"";
-//                                 display: inline-block;
-//                                 width: 0.9vw;
-//                                 height: 0.9vw;
-//                                 background-color: #d4f8b3;
-//                                 border-radius: 50%;
-//                                 //margin-right: 1vw;
-//                             }
-//                         }
-                        
-//                         &::-webkit-scrollbar {
-//                             width: 0.5vw;
-//                             border-radius: 20px;
-//                         }
-//                         &::-webkit-scrollbar-thumb {
-//                             background-color: #332f2f;
-//                             width: 0.6vw;
-//                             border-radius: 20px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     .modelSlider{
-//         position: absolute;
-//         margin-top: -40vw;
-//         width: 100%;
-//         .modelListWrap{
-//             position: relative;
-//             .modelListBox{
-//                 .modelListAnime{
-//                     display: flex;
-//                     flex-direction: row;
-//                     .modelTxt{
-//                         position: relative;
-//                         width: 46%;
-//                         color: #ffffff;
-//                         .modelTxtWrap{
-//                             width: 60%;
-//                             margin: auto;
-//                             .title{
-//                                 margin-top: 2.45vw;
-//                                 font-size: 1.87vw;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.13vw;
-//                                 overflow: hidden;
-//                                 text-overflow: ellipsis;
-//                                 white-space: nowrap;
-//                                 color: #a1ff4b;
-//                             }
-//                             .subTitle{
-//                                 margin-top: 0.6vw;
-//                                 font-size: 1.87vw;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.13vw;
-//                                 overflow: hidden;
-//                                 text-overflow: ellipsis;
-//                                 white-space: nowrap;
-//                                 color: #a1ff4b;
-//                             }
-//                             .des{
-//                                 color: #ffffff;
-//                                 width: 100%;
-//                                 height: 11.9vw;
-//                                 margin-top: 1.2vw;
-//                                 word-break: break-all;
-//                                 font-size: 1.56vw;
-//                                 background-color: rgba(255,255,255,0);
-//                                 border: none;
-//                                 resize: none;
-//                                 overflow: hidden;
-//                                 text-overflow: ellipsis;
-//                                 box-sizing:border-box;
-//                                 word-break: break-all;
-//                                 display: -webkit-box;
-//                                 -webkit-box-orient: vertical;
-//                                 -webkit-line-clamp: 6;
-//                             }
-//                         }
-//                     }
-//                     .modelImg{
-//                         width: 54%;
-//                         img{
-//                             width: 100%;
-//                         }
-//                     }
-//                 }
-//             }
-//             .swiper-button-prev {
-//                 position: absolute;
-//                 top: 27vw;
-//                 left: 9.48vw;
-//                 width: 3.44vw;
-//                 height: 3.44vw;
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconPrev.png');
-//                 &::after{
-//                     content: '';
-//                 }
-//             }
-            
-//             .swiper-button-next {
-//                 position: absolute;
-//                 top: 27vw;
-//                 left: 14.8vw;
-//                 width: 3.44vw;
-//                 height: 3.44vw;
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconNext.png');
-//                 &::after{
-//                     content: '';
-//                 }
-//             }
-//         }
-//     }
-// }
-// #aboutUsPage{
-//     .banner{
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1100px;
-//         background: url('~/static/image/pc/aboutUs/aboutUsBg.png') no-repeat;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgImg{
-//             &-anime{
-//                 width: 100%;
-//                 height: 100%;
-//                 &-obj{
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/aboutUsBg2.png');
-//                 }
-//             }
-//         }
-//         .title{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(452px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 4.58vw;
-//                     font-weight: 900;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .subTitle{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(611px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 2.4vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.9vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .navBtn{
-//             position: absolute;
-//             bottom: 0;
-//             width: 100%;
-//             z-index: 2;
-//             .navBtnWrap{
-//                 position: relative;
-//                 display: flex;
-//                 justify-content: center;
-//                 flex-direction: row;
-//                 word-wrap: normal;
-//                 width: 60%;
-//                 margin: auto;
-//                     .navBtnAnime{
-//                         text-align: center;
-//                         position: relative;
-//                         width: 33.33%;
-//                         color: #ffffff;
-//                         font-size: 1.875vw;
-//                         span{
-//                             text-align: center;
-//                             padding-bottom: 1vw;
-//                             position: relative;
-//                             cursor: pointer;
-//                             &:hover{
-//                                 color: #9dff43;
-//                                 &::after{
-//                                     content: '';
-//                                     position: absolute;
-//                                     width: 180%;
-//                                     height: 6px;
-//                                     left: -40%;
-//                                     bottom: 0;
-//                                     background:url('~/static/image/pc/main/aboutUsBtnLine.png') no-repeat;
-//                                     background-size: 100%;
-//                                 }
-//                             }
-//                         }
-//                     }                
-//             }
-//         }
-//     }
-//     .vision{
-//         z-index: 1;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1683px;
-//         background: url('~/static/image/pc/aboutUs/visionBg.png') no-repeat;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgIcon{
-//             @for $i from 1 through 2 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         position: absolute;
-//                         @if $i == 1 {
-//                             transform-origin: left;
-//                             left: #{math.div(1186px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(139px, $boxHeight_pc) * 100%};
-//                             $w: 161px;
-//                             $h: 161px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                             }
-//                         } @else if $i == 2 {
-//                             transform-origin: right;
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(151px, $boxHeight_pc) * 100%};
-//                             $w: 1920px;
-//                             $h: 1250px;
-//                             opacity: 0.4;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/group-23.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/main/newsBg.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title {
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 $w: 623px;
-//                 $h: 89px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 top: #{math.div(191px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                     // $w: 204px;
-//                     // $h: 89px;
-//                     // @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                     // left: #{math.div(85px, $boxWidth_mb) * 100%};
-//                     // top: #{math.div(0px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/aboutUs/our-vision-png.png');
-//                     @include mob-width {
-//                         background-image: url('~/static/image/mb/mbVisionTitle.png');
-//                     }
-//                 }
-//             }
-//         }
-//         .des {
-//             width: 100%;
-//             top: #{math.div(323px, $boxHeight_pc) * 100%};
-//             position: absolute;
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: center;
-//             text-align: center;
-//             font-size: 1.7vw;
-//             letter-spacing: 0.215vw;
-//             color: #fff;
-//             font-family: SourceHanSansTW;
-//             @include mob-width {
-//                 display: none;                
-//             }
-//             .desContain{
-//                 line-height: 1.67;
-//                 margin-top: 1.4vw;
-//             }
-//             .title{
-//                 margin-top: 0;
-//                 font-size: 2.4vw;
-//                 font-weight: bold;
-//                 font-stretch: normal;
-//                 font-style: normal;
-//                 line-height: normal;
-//                 letter-spacing: 0.6vw;
-//             }
-//             .title2{
-//                 margin-top: 6.67vw;
-//                 font-size: 2.4vw;
-//                 font-weight: bold;
-//                 font-stretch: normal;
-//                 font-style: normal;
-//                 line-height: normal;
-//                 letter-spacing: 0.6vw;
-//             }
-//             ul{
-//                 margin-top: 2.24vw;
-//                 li{
-//                     text-align: start;
-//                     line-height: 1.81;
-//                     letter-spacing: 0.5vw;
-//                 }
-//             }
-//         }
-//     }
-//     .service{
-//         z-index: 1;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 840px;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgIcon{
-//             @for $i from 1 through 2 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         position: absolute;
-//                         @if $i == 1 {
-//                             transform-origin: left;
-//                             right: #{math.div(-132px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(0px, $boxHeight_pc) * 100%};
-//                             $w: 455px;
-//                             $h: 690px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                             }
-//                         } @else if $i == 2 {
-//                             transform-origin: right;
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(-286px, $boxHeight_pc) * 100%};
-//                             $w: 400px;
-//                             $h: 606px;
-//                             opacity: 0.4;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/modelBgIcon.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/main/newsBgIcon1.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title {
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 $w: 448.7px;
-//                 $h: 57.4px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 top: #{math.div(0px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                     // $w: 204px;
-//                     // $h: 89px;
-//                     // @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                     // left: #{math.div(85px, $boxWidth_mb) * 100%};
-//                     // top: #{math.div(0px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/aboutUs/serviceTitle.png');
-//                     @include mob-width {
-//                         background-image: url('~/static/image/mb/mbVisionTitle.png');
-//                     }
-//                 }
-//             }
-//         }
-//         .btnBox{
-//             display: flex;
-//             justify-content: center;
-//             .serviceBtn{
-//                 top: #{math.div(137px, $boxHeight_pc) * 100%};
-//                 position: absolute;
-//                 display: flex;
-//                 justify-content: center;
-//                 @for $i from 1 through 3 {
-//                     .serviceBtn__#{$i} {
-//                         &-anime {
-//                             border-radius: 25px;
-//                             position: relative;
-//                             margin-left: 2.34vw;
-//                             width: 25vw;
-//                             height: 21vw;
-//                             // position: absolute;
-//                             // $w: 479px;
-//                             // $h: 412px;
-//                             // @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @if $i == 1 {
-//                             } @else if $i == 2 {
-//                             }
-//                             &-obj {
-//                                 position: absolute;
-//                                 left: 0;
-//                                 top: 0;
-//                                 right: 0;
-//                                 bottom: 0;
-//                                 background-size: 100%;
-//                                 background-repeat: no-repeat;
-//                                 background-position: center;
-//                                 border-radius: 10px;
-//                                 transition: 0.2s linear;
-//                                 &:hover{
-//                                     background-size: 110%;
-//                                 }
-//                                 @if $i == 1 {
-//                                     background-image: url('~/static/image/pc/aboutUs/serviceImg1.png');
-//                                     @include mob-width {
-//                                     }
-//                                 } @else if $i == 2 {
-//                                     background-image: url('~/static/image/pc/aboutUs/serviceImg2.png');
-//                                     @include mob-width {
-//                                     }
-//                                 } @else if $i == 3 {
-//                                     background-image: url('~/static/image/pc/aboutUs/serviceImg3.png');
-//                                     @include mob-width {
-//                                     }
-//                                 }
-//                                 .serviceTxtBg{
-//                                     position: absolute;
-//                                     bottom: 0;
-//                                     width: 100%;
-//                                     height: 40%;
-//                                     background: linear-gradient(to bottom , rgba(0, 0, 0, 0), #000000);
-//                                     z-index: 1;
-//                                 }
-//                                 .serviceTxt{
-//                                     position: absolute;
-//                                     width: 100%;
-//                                     height: 100%;
-//                                     display: flex;
-//                                     align-items: end;
-//                                     padding:0 1.77vw;
-//                                     .wrap{
-//                                         width: 100%;
-//                                         display: flex;
-//                                         justify-content: space-between;
-//                                         align-items: center;
-//                                         padding-bottom: 1vw;
-//                                         .txt{
-//                                             font-size: 1.56vw;
-//                                             font-weight: bold;
-//                                             font-stretch: normal;
-//                                             font-style: normal;
-//                                             line-height: normal;
-//                                             letter-spacing: 0.28vw;
-//                                             color: #fff;
-//                                             align-items: end;
-//                                             z-index: 2;
-//                                             &:after{
-//                                                 content: '';
-//                                                 //position: absolute;
-//                                                 background-image: url('~/static/image/pc/aboutUs/line.png');
-//                                             }
-//                                         }
-//                                         .serviceArrow{
-//                                             width: 1.2vw;
-//                                             z-index: 2;
-//                                             padding-right: 3.11vw;
-//                                             img{
-//                                                 width: 100%;
-//                                             }
-//                                         }
-//                                     }
-                                    
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     .ourTeam{
-//         z-index: 1;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 999px;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgIcon{
-//             @for $i from 1 through 1 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         position: absolute;
-//                         @if $i == 1 {
-//                             left: #{math.div(1165px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(-42px, $boxHeight_pc) * 100%};
-//                             $w: 161px;
-//                             $h: 161px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                             }
-//                         } @else if $i == 2 {
-//                             transform-origin: right;
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(-13px, $boxHeight_pc) * 100%};
-//                             $w: 400px;
-//                             $h: 606px;
-//                             opacity: 0.4;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 display: none;
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/group-23.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/main/newsBgIcon1.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title {
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 $w: 532.3px;
-//                 $h: 89px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 top: #{math.div(0px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                     // $w: 204px;
-//                     // $h: 89px;
-//                     // @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                     // left: #{math.div(85px, $boxWidth_mb) * 100%};
-//                     // top: #{math.div(0px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/aboutUs/ourTeam.png');
-//                     @include mob-width {
-//                         background-image: url('~/static/image/mb/mbVisionTitle.png');
-//                     }
-//                 }
-//             }
-//         }
-//         .teamBox{
-//             position: absolute;
-//             width: 100%;
-//             top: #{math.div(225px, $boxHeight_pc) * 100%};
-//             .teamBtn{
-//                 .swiper-slide{
-//                     display: flex;
-//                     justify-content: center;
-//                     .modelListAnime{
-//                         width: 73%;
-//                         display: flex;
-//                         .teamBtnImg{
-//                             width: 36%;
-//                             img{
-//                                 width: 100%;
-//                             }
-//                         }
-//                         .teamBtnTxt{
-//                             width: 64%;
-//                             padding-left: 3.18vw;
-//                             .name{
-//                                 font-size: 2.2vw;
-//                                 color: #fff;
-//                                 padding-top: 1vw;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.538vw;
-//                             }
-//                             .enName{
-//                                 font-size: 1.6vw;
-//                                 margin-top: 1vw;
-//                                 color: #9dff43;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.5vw;
-//                             }
-//                             .des{
-//                                 font-size: 2.2vw;
-//                                 margin-top: 2vw;
-//                                 width: 42.66vw;
-//                                 height: 14.9vw;
-//                                 color: #fff;
-//                                 overflow-y: auto;
-//                                 padding-right: 10px;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.538vw;
-//                                 &::-webkit-scrollbar {
-//                                     width: 10px;
-//                                     border-radius: 20px;
-//                                 }
-//                                 &::-webkit-scrollbar-thumb {
-//                                     background-color: #6e6c6c;
-//                                     width: 10px;
-//                                     border-radius: 20px;
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//                 .swiper-button-prev {
-//                     $w: 66px;
-//                     $h: 66px;
-//                     height: unset;
-//                     margin-top: #{math.div(-80px, $boxWidth_pc) * 100%};
-//                     margin-left: #{math.div(128px, $boxWidth_pc) * 100%};
-//                     @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/iconPrev.svg');
-//                     @include mob-width {
-                        
-//                     }
-//                 }
-                
-//                 .swiper-button-next {
-//                     $w: 66px;
-//                     $h: 66px;
-//                     height: unset;
-//                     margin-top: #{math.div(-80px, $boxWidth_pc) * 100%};
-//                     margin-right: #{math.div(128px, $boxWidth_pc) * 100%};
-//                     @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/iconNext.svg');
-//                     @include mob-width {
-                        
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     .legalTeam{
-//         z-index: 1;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 126px;
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgIcon{
-//             &-anime {
-//                 position: absolute;
-//                 left: #{math.div(1259px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(-4px, $boxHeight_pc) * 100%};
-//                 $w: 161px;
-//                 $h: 161px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 &-obj{
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/group-23.png');
-//                 }
-//             }
-//         }
-//         .title {
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 $w: 708.7px;
-//                 $h: 89px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 top: #{math.div(0px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/aboutUs/legalTeam.png');
-//                     @include mob-width {
-//                         background-image: url('~/static/image/mb/mbVisionTitle.png');
-//                     }
-//                 }
-//             }
-//         }
-//         .subTitle1{
-//             &-anime{
-//                 margin-top: 6.5%;
-//                 &-obj{
-//                     text-align: center;
-//                     font-size: 2.18vw;
-//                     color: #fff;
-//                 }
-//             }
-//         }
-//         .certificate1{
-//             &-anime{
-//                 width: 70.8%;
-//                 margin: auto;
-//                 margin-top: 6%;
-//                 img{
-//                     width: 100%;
-//                 }
-//             }
-//         }
-//         .subTitle2{
-//             &-anime{
-//                 margin-top: 3.23%;
-//                 &-obj{
-//                     text-align: center;
-//                     font-size: 2.18vw;
-//                     color: #fff;
-//                 }
-//             }
-//         }
-//         .certificate2{
-//             &-anime{
-//                 width: 39.7%;
-//                 margin: auto;
-//                 margin-top: 2.3%;
-//                 img{
-//                     width: 100%;
-//                 }
-//             }
-//         }
-//     }
-// }
-// #servicePage{
-//     .banner{
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1100px;
-//         background-repeat: no-repeat;
-//         background-image: url('~/static/image/pc/service/serviceBg.png');
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgImg{
-//             &-anime{
-//                 width: 100%;
-//                 height: 100%;
-//                 &-obj{
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/aboutUsBg2.png');
-//                 }
-//             }
-//         }
-//         .title{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(452px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 4.58vw;
-//                     font-weight: 900;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .subTitle{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(611px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 2.4vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.9vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .navBtn{
-//             position: absolute;
-//             bottom: 0;
-//             width: 100%;
-//             z-index: 2;
-//             .navBtnWrap{
-//                 position: relative;
-//                 display: flex;
-//                 justify-content: center;
-//                 flex-direction: row;
-//                 word-wrap: normal;
-//                 width: 60%;
-//                 margin: auto;
-//                     .navBtnAnime{
-//                         text-align: center;
-//                         position: relative;
-//                         width: 33.33%;
-//                         color: #ffffff;
-//                         font-size: 1.875vw;
-//                         span{
-//                             text-align: center;
-//                             padding-bottom: 1vw;
-//                             position: relative;
-//                             cursor: pointer;
-//                             &:hover{
-//                                 color: #9dff43;
-//                                 &::after{
-//                                     content: '';
-//                                     position: absolute;
-//                                     width: 180%;
-//                                     height: 6px;
-//                                     left: -40%;
-//                                     bottom: 0;
-//                                     background:url('~/static/image/pc/main/aboutUsBtnLine.png') no-repeat;
-//                                     background-size: 100%;
-//                                 }
-//                             }
-//                         }
-//                     }                
-//             }
-//         }
-//     }
-//     .serviceList{
-//         margin-top: 2vw;
-//         overflow-x: hidden;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 971px;
-//         $boxWidth_mb: 375px;
-//         $boxHeight_mb: 712px;
-//         //background: url('~/static/image/pc/main/rectangle-15.png') no-repeat;
-//         background-size: 100%;
-//         overflow: hidden;
-//         @include mob-width {
-//             background-image: none;
-//         }
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//             @include mob-width {
-//                 padding-bottom: #{math.div($boxHeight_mb, $boxWidth_mb) * 100%};
-                
-//             }
-//         }
-//         .serviceListBox{
-//             position: absolute;
-//             left: 0;
-//             top: 0;
-//             width: 100%;
-//             height: 100%;
-//         }
-//         .serviceListContain{
-//             .serviceListImg{
-//                 width: 100%;
-//                 height: 100%;
-//                 img{
-//                     width: 100%;
-//                 }
-//             }
-//             .swiper-pagination{
-//                 z-index: 3;
-//                 position: absolute;
-//                 left: #{math.div(275px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(143px, $boxHeight_pc) * 100%};
-//                 $w: 185px;
-//                 $h: 3px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//             }
-//             .swiper-pagination-bullet {
-//                 width: 20px;
-//                 height: 20px;
-//                 text-align: center;
-//                 line-height: 20px;
-//                 font-size: 12px;
-//                 color: #000;
-//                 opacity: 1;
-//                 background: rgba(0, 0, 0, 0.2);
-//               }
-//             .swiper-pagination-bullet-active {
-//                 color: #656565;
-//                 background: #a0df66;
-                
-//             }
-//             .swiper-pagination{
-//                 background: #656565;
-//             }
-//             .swiper-pagination-progressbar-fill{
-//                 background: #a0df66;
-//             }
-//             .serviceListBlur{
-//                 pointer-events: none;
-//                 position: absolute;
-//                 z-index: 2;
-//                 top: 0;
-//                 left: 0;
-//                 width: 100%;
-//                 height: 100%;
-//                 img{
-//                     width: 100%;
-//                 }
-//             }
-//             .swiper-button-prev {
-//                 z-index: 3;
-//                 position: absolute;
-//                 left: #{math.div(488px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(143.4px, $boxHeight_pc) * 100%};
-//                 $w: 46px;
-//                 $h: 46px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconPrev.png');
-//                 &::after{
-//                     content: '';
-//                 }
-//             }
-            
-//             .swiper-button-next {
-//                 z-index: 3;
-//                 position: absolute;
-//                 left: #{math.div(557px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(143.4px, $boxHeight_pc) * 100%};
-//                 $w: 46px;
-//                 $h: 46px;
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconNext.png');
-//                 &::after{
-//                     content: '';
-//                 }
-//             }
-//             .serviceItemNum{
-//                 z-index: 3;
-//                 position: absolute;
-//                 left: #{math.div(136px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(123px, $boxHeight_pc) * 100%};
-//                 color: #b5b1b1;
-//                 font-size: 1.56vw;
-//                 font-weight: normal;
-//                 font-stretch: normal;
-//                 font-style: normal;
-//                 line-height: normal;
-//                 letter-spacing: 0.24vw;
-//                 span{
-//                     color: #ffffff;
-//                 }
-//             }
-//             .serviceListTxt{
-//                 position: absolute;
-//                 width: 100%;
-//                 height: 100%;
-//                 top: 0;
-//                 left: 0;
-//                 z-index: 3;
-//                 .title{
-//                     position: absolute;
-//                     left: #{math.div(1209px, $boxWidth_pc) * 100%};
-//                     top: #{math.div(214px, $boxHeight_pc) * 100%};
-//                     font-size: 2.7vw;
-//                     letter-spacing: 0.4vw;
-//                     font-weight: bold;
-//                     color: #97f540;
-//                     z-index: 3;
-//                 }
-//                 .des{
-//                     position: absolute;
-//                     width: 31vw;
-//                     height: 19.6vw;
-//                     left: #{math.div(1209px, $boxWidth_pc) * 100%};
-//                     top: #{math.div(305px, $boxHeight_pc) * 100%};
-//                     font-size: 1.6vw;
-//                     font-weight: 500;
-//                     background-color: rgb(0 0 0 / 0%);
-//                     z-index: 3;
-//                     letter-spacing: 0.25vw;
-//                     color: #ffffff;
-//                     border: none;
-//                     overflow-y: auto;
-//                     resize: none;
-//                 }                    
-//             }
-//             .serviceTitleContain{
-//                 z-index: 3;
-//                 position: absolute;
-//                 left: #{math.div(139px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(251px, $boxHeight_pc) * 100%};
-//                 .serviceListTitle{
-//                     cursor: pointer;
-//                     transition: 0.2 linear;
-//                     transform-origin: center;
-//                     .title{
-//                         margin-bottom: 0.8vw;
-//                         font-size: 1.25vw;
-//                         letter-spacing: 0.2vw;
-//                         color: #fff;
-//                         .titleTxt{
-//                             padding-left: 1.5vw;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-        
-//     }
-//     .case{
-//         overflow-x: hidden;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1741px;
-//         $boxWidth_mb: 375px;
-//         $boxHeight_mb: 712px;
-//         //background: url('~/static/image/pc/main/rectangle-15.png') no-repeat;
-//         background-size: 100%;
-//         @include mob-width {
-//             background-image: none;
-//         }
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//             @include mob-width {
-//                 padding-bottom: #{math.div($boxHeight_mb, $boxWidth_mb) * 100%};
-                
-//             }
-//         }
-//         .bgIcon {
-//             @for $i from 1 through 4 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         @if $i == 1 {
-//                             position: absolute;
-//                             $w: 180px;
-//                             $h: 180px;
-//                             left: #{math.div(950px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(94px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 75px;
-//                                 $h: 75px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(21px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(28px, $boxHeight_mb) * 100%};
-//                             }
-//                         } @else if $i == 2 {
-//                             position: absolute;
-//                             $w: 1920px;
-//                             $h: 1440px;
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(240px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 262px;
-//                                 $h: 267px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(113px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(56px, $boxHeight_mb) * 100%};
-//                             }
-//                         }@if $i == 3 {
-//                             position: absolute;
-//                             left: #{math.div(-24px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(1057px, $boxHeight_pc) * 100%};
-//                             $w: 400px;
-//                             $h: 606px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 75px;
-//                                 $h: 75px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(21px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(28px, $boxHeight_mb) * 100%};
-//                             }
-//                         }@if $i == 4 {
-//                             position: absolute;
-//                             right: #{math.div(-270px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(774px, $boxHeight_pc) * 100%};
-//                             $w: 455px;
-//                             $h: 690px;
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 75px;
-//                                 $h: 75px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(21px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(28px, $boxHeight_mb) * 100%};
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/group-23.png');
-//                                 @include mob-width {
-//                                     background-image: url('~/static/image/mb/mbBgIcon.png');
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/service/caseBg.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 3 {
-//                                 background-image: url('~/static/image/pc/main/newsBgIcon1.png');
-//                                 @include mob-width {
-//                                 }
-//                             } @else if $i == 4 {
-//                                 background-image: url('~/static/image/pc/main/modelBgIcon.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title1 {
-//             &-anime {
-//                 position: absolute;
-//                 $w: 476.9px;
-//                 $h: 58.6px;
-//                 left: #{math.div(265.2px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(158.4px, $boxHeight_pc) * 100%};
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 @include mob-width {
-//                     $w: 148px;
-//                     $h: 18px;
-//                     @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                     left: #{math.div(51px, $boxWidth_mb) * 100%};
-//                     top: #{math.div(34px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/bc-haul-png.png');
-//                 }
-//             }
-//         }
-//         .title2 {
-//             &-anime {
-//                 position: absolute;
-//                 left: #{math.div(791px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(147px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                     left: #{math.div(213px, $boxWidth_mb) * 100%};
-//                     top: #{math.div(32px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     font-family: PingFangSC;
-//                     font-size: 2.6vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #fff;
-//                     @include mob-width {
-//                         font-size: 4.2vw;
-//                     }
-//                 }
-//             }
-//         }
-//         .caseSlider{
-//             position: absolute;
-//             top: #{math.div(413px, $boxWidth_pc) * 100%};
-//             width: 100%;
-            
-//             .caseSwiper1{
-//                     width: 100%;
-//                     //height: 300px;
-//                 .swiper-slide{
-//                 display: flex;
-//                 justify-content: center;
-//                 align-items: center;
-//                     .caseListAnime{
-//                         width: 82%;
-//                         display: flex;
-//                         .caseList1Img{
-//                             width: 48.28%;
-//                             img{
-//                                 display: block;
-//                                 width: 100%;
-//                             }
-//                         }
-//                         .caseList1Txt{
-//                             width: 51.72%;
-//                             //padding-left: 2.4vw;
-//                             .name{
-//                                 padding-left: 2.4vw;
-//                                 font-size: 2.2vw;
-//                                 color: #9dff43;
-//                                 padding-top: 4.7vw;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.538vw;
-//                             }
-//                             .des{
-//                                 padding-left: 2.4vw;
-//                                 font-size: 1.6vw;
-//                                 margin-top: 1.5vw;
-//                                 width: 33.4vw;
-//                                 height: 16.2vw;
-//                                 color: #fff;
-//                                 overflow-y: auto;
-//                                 padding-right: 10px;
-//                                 font-weight: bold;
-//                                 font-stretch: normal;
-//                                 font-style: normal;
-//                                 line-height: normal;
-//                                 letter-spacing: 0.538vw;
-//                                 &::-webkit-scrollbar {
-//                                     width: 10px;
-//                                     border-radius: 20px;
-//                                 }
-//                                 &::-webkit-scrollbar-thumb {
-//                                     background-color: #6e6c6c;
-//                                     width: 10px;
-//                                     border-radius: 20px;
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-                
-//             }
-//             .caseSwiper2{
-//                 margin-top: 4VW;
-//                 width: 82%; 
-//                 .swiper-slide {
-//                     width: 100%;
-//                     height: 100%;
-//                     opacity: 0.6;
-//                     display: flex;
-//                     justify-content: center;
-//                     .sliderWrap{
-//                         .sliderImg{
-//                             width: 100%;
-//                             img {
-//                                 display: block;
-//                                 width: 100%;
-//                                 height: 100%;
-//                                 object-fit: cover;
-//                             } 
-//                         }
-                        
-//                     }
-                                       
-//                 }
-//                 .swiper-slide-active {
-//                     opacity: 1;
-//                 }
-//             }
-//             .swiper-button-prev {
-//                 $w: 66px;
-//                 $h: 66px;
-//                 height: unset;
-//                 margin-top: #{math.div(250px, $boxWidth_pc) * 100%};
-//                 margin-left: #{math.div(128px, $boxWidth_pc) * 100%};
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconPrev.svg');
-//                 @include mob-width {
-                    
-//                 }
-//             }
-            
-//             .swiper-button-next {
-//                 $w: 66px;
-//                 $h: 66px;
-//                 height: unset;
-//                 margin-top: #{math.div(250px, $boxWidth_pc) * 100%};
-//                 margin-right: #{math.div(128px, $boxWidth_pc) * 100%};
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 background-size: 100%;
-//                 background-repeat: no-repeat;
-//                 background-position: center;
-//                 background-image: url('~/static/image/pc/main/iconNext.svg');
-//                 @include mob-width {
-                    
-//                 }
-//             }
-//         }
-//     }
-//     .QAList{
-//         overflow-x: hidden;
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1585px;
-//         $boxWidth_mb: 375px;
-//         $boxHeight_mb: 712px;
-//         //background: url('~/static/image/pc/main/rectangle-15.png') no-repeat;
-//         background-size: 100%;
-//         @include mob-width {
-//             background-image: none;
-//         }
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//             @include mob-width {
-//                 padding-bottom: #{math.div($boxHeight_mb, $boxWidth_mb) * 100%};
-                
-//             }
-//         }
-//         .bgIcon {
-//             @for $i from 1 through 2 {
-//                 .bgIcon__#{$i} {
-//                     &-anime {
-//                         @if $i == 1 {
-//                             position: absolute;
-//                             $w: 180px;
-//                             $h: 180px;
-//                             left: #{math.div(630px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(-30px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 75px;
-//                                 $h: 75px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(21px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(28px, $boxHeight_mb) * 100%};
-//                             }
-//                         } @else if $i == 2 {
-//                             position: absolute;
-//                             $w: 1920px;
-//                             $h: 1440px;
-//                             left: #{math.div(0px, $boxWidth_pc) * 100%};
-//                             top: #{math.div(140px, $boxHeight_pc) * 100%};
-//                             @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                             @include mob-width {
-//                                 $w: 262px;
-//                                 $h: 267px;
-//                                 @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                                 left: #{math.div(113px, $boxWidth_mb) * 100%};
-//                                 top: #{math.div(56px, $boxHeight_mb) * 100%};
-//                             }
-//                         }
-//                         &-obj {
-//                             position: absolute;
-//                             left: 0;
-//                             top: 0;
-//                             right: 0;
-//                             bottom: 0;
-//                             background-size: 100%;
-//                             background-repeat: no-repeat;
-//                             background-position: center;
-//                             @if $i == 1 {
-//                                 background-image: url('~/static/image/pc/main/group-23.png');
-//                                 @include mob-width {
-//                                     background-image: url('~/static/image/mb/mbBgIcon.png');
-//                                 }
-//                             } @else if $i == 2 {
-//                                 background-image: url('~/static/image/pc/service/caseBg.png');
-//                                 @include mob-width {
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//         .title1 {
-//             &-anime {
-//                 position: absolute;
-//                 $w: 476.9px;
-//                 $h: 58.6px;
-//                 left: #{math.div(211.8px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(37px, $boxHeight_pc) * 100%};
-//                 @include getImgBoxSize($w, $h, $boxWidth_pc);
-//                 @include mob-width {
-//                     $w: 148px;
-//                     $h: 18px;
-//                     @include getImgBoxSize($w, $h, $boxWidth_mb);
-//                     left: #{math.div(51px, $boxWidth_mb) * 100%};
-//                     top: #{math.div(34px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/bc-haul-png.png');
-//                 }
-//             }
-//         }
-//         .title2 {
-//             &-anime {
-//                 position: absolute;
-//                 left: #{math.div(458px, $boxWidth_pc) * 100%};
-//                 top: #{math.div(37px, $boxHeight_pc) * 100%};
-//                 @include mob-width {
-//                     left: #{math.div(213px, $boxWidth_mb) * 100%};
-//                     top: #{math.div(32px, $boxHeight_mb) * 100%};
-//                 }
-//                 &-obj {
-//                     font-family: PingFangSC;
-//                     font-size: 2.6vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #fff;
-//                     @include mob-width {
-//                         font-size: 4.2vw;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     .QAInfo{
-//         width: 100%;
-//         margin-top: -72vw;
-//         position: relative;
-//         .QAInfoWrap{
-//             width: 75.8%;
-//             margin: 0 auto;
-//             .infoList{
-//                 position: relative;
-//                 padding: 2vw 0;
-//                 border-bottom: 2px solid #fff;
-//                 .infoTitleContain{
-//                     color:#fff;
-//                     font-size: 2.23vw;
-//                     font-weight: 500;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.55vw;
-//                     transition:  0.2s linear;
-//                 }
-//                 .infoListDesContain{
-//                     transform: top;
-//                     color:#d4ffad;
-//                     font-size: 1.88vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.5vw;
-//                     margin-top: 1.56vw;
-//                 }
-//                 .v-enter{
-//                     transform-origin: top;
-//                     transform: scaleY(0);
-//                 }
-//                 .v-enter-to{
-//                     transform-origin: bottom;
-//                     transform: scaleY(1);
-//                 }
-//                 .v-enter-active{
-//                 transition:  0.2s ease-in-out;
-//                 }
-                
-//                 .v-leave{
-//                     transform-origin: bottom;
-//                     transform: scaleY(1);
-//                 }
-//                 .v-leave-to{
-//                     transform-origin: top;
-//                     transform: scaleY(0);
-//                 }
-//                 .v-leave-active{
-//                 transition:  0.2s ease-in-out;
-//                 }
-//             }
-//             .infoTxt{
-//                 margin-top: 1.15vw;
-//                 font-size: 2.24vw;
-//                 font-weight: 600;
-//                 font-stretch: normal;
-//                 font-style: normal;
-//                 line-height: normal;
-//                 letter-spacing: 0.55vw;
-//                 color: #fff;
-//                 span{
-//                     padding-left: 0.3vw;
-//                     font-size: 1.77vw;
-//                     font-weight: 500;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.44vw;
-//                     color: #9dff43;
-//                 }
-//             }
-//         }
-//     }
-// }
-// #contactPage{
-//     .banner{
-//         width: 100%;
-//         position: relative;
-//         $boxWidth_pc: 1920px;
-//         $boxHeight_pc: 1100px;
-//         background-repeat: no-repeat;
-//         background-image: url('~/static/image/pc/contact/contactUsBg.png');
-//         background-size: 100%;
-//         > .height {
-//             display: block;
-//             padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
-//         }
-//         .bgImg{
-//             &-anime{
-//                 width: 100%;
-//                 height: 100%;
-//                 &-obj{
-//                     position: absolute;
-//                     left: 0;
-//                     top: 0;
-//                     right: 0;
-//                     bottom: 0;
-//                     background-size: 100%;
-//                     background-repeat: no-repeat;
-//                     background-position: center;
-//                     background-image: url('~/static/image/pc/main/aboutUsBg2.png');
-//                 }
-//             }
-//         }
-//         .title{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(452px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 4.58vw;
-//                     font-weight: 900;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.6vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .subTitle{
-//             display: flex;
-//             justify-content: center;
-//             &-anime {
-//                 position: absolute;
-//                 top: #{math.div(611px, $boxHeight_pc) * 100%};
-//                 &-obj {
-//                     font-size: 2.4vw;
-//                     font-weight: 600;
-//                     font-stretch: normal;
-//                     font-style: normal;
-//                     line-height: normal;
-//                     letter-spacing: 0.9vw;
-//                     color: #ffffff;
-//                 }
-//             }
-//         }
-//         .navBtn{
-//             position: absolute;
-//             bottom: 0;
-//             width: 100%;
-//             z-index: 2;
-//             .navBtnWrap{
-//                 position: relative;
-//                 display: flex;
-//                 justify-content: center;
-//                 flex-direction: row;
-//                 word-wrap: normal;
-//                 width: 60%;
-//                 margin: auto;
-//                     .navBtnAnime{
-//                         text-align: center;
-//                         position: relative;
-//                         width: 33.33%;
-//                         color: #ffffff;
-//                         font-size: 1.875vw;
-//                         span{
-//                             text-align: center;
-//                             padding-bottom: 1vw;
-//                             position: relative;
-//                             cursor: pointer;
-//                             &:hover{
-//                                 color: #9dff43;
-//                                 &::after{
-//                                     content: '';
-//                                     position: absolute;
-//                                     width: 180%;
-//                                     height: 6px;
-//                                     left: -40%;
-//                                     bottom: 0;
-//                                     background:url('~/static/image/pc/main/aboutUsBtnLine.png') no-repeat;
-//                                     background-size: 100%;
-//                                 }
-//                             }
-//                         }
-//                     }                
-//             }
-//         }
-//     }
-//     .form{
-//         margin-top: 79px;
-//         margin-bottom: 100px;
-//         .wrap{
-//             width: 86.4%;
-//             margin: 0 auto;
-//             display: flex;
-//             justify-content: center;
-//         }
-//         .formArea{
-//             width: 63.4%;
-//             .bgImg{
-//                 &-anime{
-//                     &-obj{
-
-//                     }
-//                 }
-//             }
-//             .formContain{
-//                 .formRow{
-//                     display: flex;
-//                     margin-left: -1.1vw;
-//                     color: #fff;
-//                     .formTitle{
-//                         margin: 0.83vw 0;
-//                         width: 50%;
-//                         margin-left: 1.1vw;
-//                         font-size: 1.5vw;
-//                     }
-//                     .formItem{
-//                         position: relative;
-//                         margin-bottom: 0.5vw;
-//                         width: 50%;
-//                         margin-left: 1.1vw;
-//                         border-radius: 9px;
-//                         span{
-//                             top: 0.9vw;
-//                             left: 0.78vw;
-//                             position: absolute;
-//                             font-size: 1.25vw;
-//                             pointer-events: none;
-//                         }
-//                         input{
-//                             width: 100%;
-//                             font-size: 1.25vw;
-//                             background-color: rgba(0, 0, 0, 0);
-//                             border-color: #fff;
-//                             color: #fff;
-//                             border-radius: 9px;
-//                             padding: 0.9vw 0.78vw;
-//                             padding-left: 8vw;
-//                             box-sizing: border-box;
-//                             &:hover{
-//                                 border-color: #b4ff00;
-//                             }
-//                             &:focus{
-//                                 border-color: #b4ff00;
-//                                 color: #fff;
-//                                 outline: 0;
-//                             }
-//                         }
-//                     }
-//                     .formDesItem{
-//                         width: 100%;
-//                         height: 15vw;
-//                         textarea{
-//                             width: 100%;
-//                             height: 100%;
-//                             font-size: 1.25vw;
-//                             background-color: rgba(0, 0, 0, 0);
-//                             border-color: #fff;
-//                             color: #fff;
-//                             border-radius: 9px;
-//                             padding: 0.9vw 0.78vw;
-//                             padding-left: 13.5vw;
-//                             box-sizing: border-box;
-//                             &:focus{
-//                                 border-color: #b4ff00;
-//                                 color: #fff;
-//                                 outline: 0;
-                                
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//             .submitBtn{
-//                 display: flex;
-//                 justify-content: center;
-//                 &-anime{
-//                     position: relative;
-//                     margin-top: 1.6vw;
-//                     width: 11.1vw;
-//                     img{
-//                         display: block;
-//                         width: 100%;
-//                     }
-//                 }
-//             }
-//         }
-//         .mapArea{
-//             padding-left: 3%;
-//             width: 36.6%;
-//         }
-//     }
-// }

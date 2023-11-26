@@ -1,8 +1,9 @@
 <template>
     <div id="main" >
-        <Header @navBarOpen="navBarOpen = true" />
+        <Header @navBarOpen="navBarOpen = true"  @increment="scrollTo" />
         <right-side-bar />
         <div class="container" data-scroll-container>
+            
             <section class="banner">
                 <div class="title">
                     <div :class="`title__${index + 1}`" v-for="(item, index) in 6" :key="'title' + index" data-anime>
@@ -12,26 +13,28 @@
                     </div>
                 </div>
                 <div class="scrollArrow">
-                    <div class="scrollArrow-anime scrollArrowAnime">
-                        <div class="scrollArrow-anime-obj"></div>
-                    </div>
+                    <a @click="scrollTo('.longTeam')">
+                        <div class="scrollArrow-anime scrollArrowAnime">
+                            <div class="scrollArrow-anime-obj"></div>
+                        </div>
+                    </a>
                 </div>
                 <div class="height"></div>
             </section>
             <section class="longTeam">
                 <div class="picture">
                     <div :class="`picture__${index + 1}`" v-for="(item, index) in 2" :key="'picture' + index" data-anime>
-                        <div :class="`picture__${index + 1}-anime pictureAnime`">
+                        <div :class="`picture__${index + 1}-anime pictureAnime`" data-scroll data-scroll-speed="-2"  data-scroll-direction="horizontal">
                             <div :class="`picture__${index + 1}-anime-obj`"></div>
                         </div>
                     </div>
                 </div>
                 <div class="subTitle">
-                    <div class="subTitle-anime subTitleAnime">
+                    <div class="subTitle-anime subTitleAnime" data-scroll data-scroll-speed="-1"  data-scroll-direction="vertical">
                         <div class="subTitle-anime-obj"></div>
                     </div>
                 </div>
-                <div class="txtContain">
+                <div class="txtContain" data-scroll data-scroll-speed="2"  data-scroll-direction="horizontal">
                     <span class="title">長照2.0，<br />讓照顧的路上有專業相挺</span>
                     <textarea class="txtBox" readonly>台灣走向超高齡社會，速度比想像中還要快又急，隨著人口老化加速，未來需要照顧年長父母的青壯人口，只會增加，不會減少。
 老年人壽命的延長，也表示照顧的時間會愈來愈長；甚至是在自己退休之後，仍須持續照顧長輩。
@@ -41,7 +44,7 @@
                     </textarea>
                 </div>
                 <div class="longTeamLine">
-                    <div class="longTeamLine-anime longTeamLineAnime">
+                    <div class="longTeamLine-anime longTeamLineAnime" data-scroll data-scroll-speed="2"  data-scroll-direction="horizontal">
                         <div class="longTeamLine-anime-obj"></div>
                     </div>
                 </div>
@@ -49,7 +52,7 @@
             </section>
             <section class="takeCare">
                 <div class="title">
-                    <div class="title-anime titleAnime">
+                    <div class="title-anime titleAnime" data-scroll data-scroll-speed="2"  data-scroll-direction="vertical">
                         <div class="title-anime-obj"></div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
             <section class="takeCareSwip">
                 <swiper class="swiper" :options="swiperOption">
                     <swiper-slide :class="`takeCareImg__${index + 1} takeCareImgBox`" v-for="(item, index) in takeCareImgList" :key="'takeCareImg' + index" data-anime>
-                        <div :class="`takeCareImg__${index + 1}-anime takeCareImgAnime`">
+                        <div :class="`takeCareImg__${index + 1}-anime takeCareImgAnime`" data-scroll data-scroll-speed="-1">
                             <a :href="item.url" target="_blank">
                                 <div class="takeCareTitle">
                                     <div class="takeCareTitle-anime">
@@ -80,12 +83,12 @@
                     </div>
                 </div>
                 <div class="title">
-                    <div class="title-anime titleAnime">
+                    <div class="title-anime titleAnime" data-scroll data-scroll-speed="2"  data-scroll-direction="vertical">
                         <div class="title-anime-obj"></div>
                     </div>
                 </div>
                 <div class="subTitle">
-                    <div class="subTitle-anime subTitleAnime">
+                    <div class="subTitle-anime subTitleAnime" data-scroll data-scroll-speed="2"  data-scroll-direction="vertical">
                         <div class="subTitle-anime-obj"></div>
                     </div>
                 </div>
@@ -93,7 +96,7 @@
                     <div :class="`intro__${index + 1}`" v-for="(item, index) in introList" :key="'intro' + index" data-anime>
                         <div :class="`intro__${index + 1}-anime introAnime`">
                             <div :class="`intro__${index + 1}-anime-box`">
-                                <div class="circle">
+                                <div :class="`circle__${index + 1} circle`" data-scroll data-scroll-call="window.circleAnime()" >
                                     <div class="line"></div>
                                 </div>
                                 <div class="picture">
@@ -113,17 +116,19 @@
                     </div>
                 </div>
                 <div class="moreBtn">
-                    <div class="moreBtn-anime moreBtnAnime">
-                        <div class="moreBtn-anime-obj"></div>
-                    </div>
-                </div>
-                <div class="moreBtn">
-                    <div class="moreBtn-anime moreBtnAnime">
-                        <div class="moreBtn-anime-obj"></div>
-                    </div>
+                    <a href="https://event.cw.com.tw/2023mohw/Infographic.pdf" target="_blank">
+                        <div class="moreBtn-anime moreBtnAnime">
+                            <div class="moreBtn-anime-obj"></div>
+                            <div class="btnIcon">
+                                <div class="btnIcon-anime">
+                                    <div class="btnIcon-anime-obj"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="mapTitle">
-                    <div class="mapTitle-anime mapTitleAnime">
+                    <div class="mapTitle-anime mapTitleAnime" data-scroll data-scroll-speed="2"  data-scroll-direction="vertical">
                         <div class="mapTitle-anime-obj"></div>
                     </div>
                 </div>
@@ -142,28 +147,53 @@
                         <div class="mask-anime-obj"></div>
                     </div>
                 </div>
-                <!-- <div class="intro">
-                    <div :class="`intro__${index + 1}`" v-for="(item, index) in introList" :key="'intro' + index" data-anime>
-                        <div :class="`intro__${index + 1}-anime introAnime`">
-                            <div :class="`intro__${index + 1}-anime-box`">
-                                <div class="circle">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="picture">
-                                    <img :src="item.image" alt="">
-                                </div>
-                            </div>
-                            <div :class="`intro__${index + 1}-anime-title`">{{ item.title }}</div>
-                            <div :class="`intro__${index + 1}-anime-des`">
-                                <img :src="item.des" alt="">
-                            </div>
+                <div class="introImg1" >
+                    <div :class="`introImg1__${index + 1}`" v-for="(item, index) in 4" :key="'introImg1' + index" data-anime >
+                        <div :class="`introImg1__${index + 1}-anime introImg1Anime`"  data-scroll data-scroll-speed="-1"  data-scroll-direction="horizontal">
+                            <div :class="`introImg1__${index + 1}-anime-obj`">{{ item.title }}</div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <div class="introImg2">
+                    <div :class="`introImg2__${index + 1}`" v-for="(item, index) in 2" :key="'introImg2' + index" data-anime>
+                        <div :class="`introImg2__${index + 1}-anime introImg1Anime`" data-scroll data-scroll-speed="-1"  data-scroll-direction="horizontal">
+                            <div :class="`introImg2__${index + 1}-anime-obj`">{{ item.title }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="introImg3">
+                    <div class="introImg3-anime introImg3Anime" data-scroll data-scroll-speed="-1"  data-scroll-direction="horizontal">
+                        <div class="introImg3-anime-obj"></div>
+                    </div>
+                </div>
+                <div class="intro">
+                    <div :class="`intro__${index + 1}`" v-for="(item, index) in mapIntroList" :key="'intro' + index" data-anime>
+                        <div :class="`intro__${index + 1}-anime introAnime`" data-scroll data-scroll-speed="-1"  data-scroll-direction="horizontal">
+                            <div :class="`intro__${index + 1}-anime-title`">{{ item.title }}</div>
+                            <span :class="`intro__${index + 1}-anime-des`">
+                                {{ item.des }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mapBtn">
+                    <a href="https://ltcpap.mohw.gov.tw/public/index.html"  target="_blank">
+                        <div class="mapBtn-anime mapBtnAnime">
+                            <div class="mapBtn-anime-obj"></div>
+                            <div class="btnIcon">
+                                <div class="btnIcon-anime">
+                                    <div class="btnIcon-anime-obj"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="height"></div>
             </section>
+            <Footer />
         </div>
         <!-- <Footer /> -->
+        
         <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" />
     </div>
 </template>
@@ -241,32 +271,53 @@ export default {
                     des: require('@/static/image/pc/introDes3.png'),
                 },
             ],
+            mapIntroList:[
+                {
+                    title:'TIPS 1',
+                    des: '透過左上角篩選功能，找到適合的服務機構',
+                },
+                {
+                    title:'TIPS 2',
+                    des: '直接點擊地圖，定位篩選出範圍內的相關服務機構',
+                },
+                {
+                    title:'TIPS 3',
+                    des: '點選下方篩選列表，觀看更詳細的聯絡資訊',
+                },
+            ],
             isMobile: false,
         }
     },
     mounted() {
         this.isDevice()
         const self =this
-        
-        // self.$nextTick(function () {
-            
-        //     //var mySwiper = new Swiper('.swiper',{})
-        //     const scroll = new LocomotiveScroll({
-        //         el: document.querySelector('[data-scroll-container]'),
-        //         smooth: true
-        //     }); 
-        // },1000)
+        var scroll
         setTimeout(()=>{
-            const scroll = new LocomotiveScroll({
+            self.scroll = new LocomotiveScroll({
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
+            let clouds1 = document.querySelector(".circle__1");
+            let clouds2 = document.querySelector(".circle__2");
+            let clouds3 = document.querySelector(".circle__3");
+            self.scroll.on("scroll", (instance) => {
+                if (instance.scroll.y > 2300 && instance.scroll.y <2800) {
+                    clouds1.style.transform = "rotate(360deg)";
+                    clouds2.style.transform = "rotate(-450deg)";
+                    clouds3.style.transform = "rotate(500deg)";
+                } else {
+                    clouds1.style.transform = "rotate(0deg)";
+                    clouds2.style.transform = "rotate(0deg)";
+                    clouds3.style.transform = "rotate(0deg)";
+                }
+            });
+            
         },100)
-        // window.bannerAnime()
-        // window.scrollAnime(this.isMobile)
-        // addEventListener('resize',()=>{
-        //     this.isDevice()
-        // })
+        window.bannerAnime()
+        // window.loopAnime()
+        addEventListener('resize',()=>{
+            this.isDevice()
+        })
         
     },
     methods: {
@@ -276,6 +327,15 @@ export default {
             } else {
                 this.isMobile = false
             }
+        },
+        scrollTo(el){
+            const self =this
+            if(el==='.map'){
+                self.scroll.scrollTo(el,{offset:-240})
+            }else {
+                self.scroll.scrollTo(el)
+            }
+            
         }
     },
 }

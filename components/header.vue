@@ -12,9 +12,9 @@
         <div class="navBar">
             <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
                 <div :class="`navBar__${index + 1}-hr`"></div>
-                <a href="/">
+                <a @click="scrollTo(item.el)">
                     <span :class="`navBar__${index + 1}-anime navBarAnime`">
-                        {{ item }}
+                        {{ item.name }}
                     </span>
                 </a>
             </div>
@@ -34,16 +34,35 @@ export default {
     data() {
         return {
             navItemList:[
-                '首頁',
-                '照顧現場',
-                '一看就懂長照2.0',
-                '長照地圖'
+                {
+                    name:'首頁',
+                    el:'.banner'
+                },
+                {
+                    name:'照顧現場',
+                    el:'.takeCare'
+                },
+                {
+                    name:'一看就懂長照2.0',
+                    el:'.fiveMin'
+                },
+                {
+                    name:'長照地圖',
+                    el:'.map'
+                },
             ]
         }
+    },
+    mounted() {
+        const self =this
     },
     methods: {
         navBarOpen() {
             this.$emit('navBarOpen')
+        },
+        scrollTo(el){
+            const self =this
+            self.$emit('increment',el)
         }
     },
 }

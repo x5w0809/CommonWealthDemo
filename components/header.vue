@@ -9,7 +9,7 @@
                 </a>
             </div>
         </div>
-        <div class="navBar">
+        <div class="navBar" v-if="!isMobile">
             <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
                 <div :class="`navBar__${index + 1}-hr`"></div>
                 <a @click="scrollTo(item.el)">
@@ -19,18 +19,30 @@
                 </a>
             </div>
         </div>
-        <!-- <div class="navBarBtn" @click="navBarOpen">
+        <div class="mb_navBar" v-if="isMobile">
+            <div class="closeBtn" @click="navBarClose()" ></div>
+            <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
+                <div :class="`navBar__${index + 1}-hr`"></div>
+                <a @click="scrollTo(item.el)">
+                    <span :class="`navBar__${index + 1}-anime navBarAnime`">
+                        {{ item.name }}
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="navBarBtn" @click="navBarOpen">
             <a href="javascript:void(0);">
                 <div class="navBarBtn-anime">
                     <div class="navBarBtn-anime-obj"></div>
                 </div>
             </a>
-        </div> -->
+        </div>
         <div class="height"></div>
     </div>
 </template>
 <script>
 export default {
+    props:['isMobile'],
     data() {
         return {
             navItemList:[

@@ -147,6 +147,78 @@ body {
             cursor: pointer;
         }
     }
+    .mb_navBar{
+        display: none;
+        height: 100%;
+        justify-content: end;
+        margin-right: 40px;
+        @for $i from 1 through 4 {
+            .navBar__#{$i} {
+                display: flex;
+                align-self: baseline;
+                align-items: center;
+                text-decoration:none;
+                &-hr{
+                    @if $i == 1 {
+                        visibility: hidden;
+                    }
+                    width: 0px;
+                    margin: 0 24px;
+                    height: 12px;
+                    border: 1px solid #E4E4E4;
+                }
+                a{
+                    text-decoration:none;
+                    color: #333333;    
+                }
+                &-anime {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    letter-spacing: 0.1em;
+                    text-align: left;
+                    position: relative;
+                    transition: all 0.2s linear;
+                    &::after{
+                        transition: all 0.2s linear;
+                        content: '';
+                        position: absolute;
+                        width: 0%;
+                        height: 2px;
+                        margin-top: 25px;
+                        left: 0;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url('~/static/image/pc/headerLine.svg');
+                    }
+                    &:hover{
+                        color: #EC6C00;
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .navBarAnime{
+            cursor: pointer;
+        }
+        .closeBtn{
+            z-index: 2;
+            cursor: pointer;
+            position: absolute;
+            top: 8.5vw;
+            right: 5vw;
+            width: 6vw;
+            height: 6vw;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('~/static/image/pc/icon--burger.png');            
+        }
+    }
 }
 #footer{
     position: relative;
@@ -164,18 +236,32 @@ body {
             letter-spacing: 0em;
             text-align: center;
             color: #707070;
+            @include mob-width {
+                
+            }
         }
     }
+    .footerContain_mb{
+        width: 92%;
+        font-size: 3.46vw;
+        line-height: 5.3vw;
+        text-align: center;
+    }
 }
+
 .banner {
     position: relative;
     width: 100%;
     $boxWidth_pc: 1440px;
     $boxHeight_pc: 900px;
     $boxWidth_mb: 375px;
-    $boxHeight_mb: 60px;
+    $boxHeight_mb: 667px;
     background: url('~/static/image/pc/BG.jpg') no-repeat;
     background-size: 100%;
+    @include mob-width {
+        background: url('~/static/image/pc/mb_BG.jpg') no-repeat;
+        background-size: 100%;
+    }
     > .height {
         display: block;
         padding-bottom: #{math.div($boxHeight_pc, $boxWidth_pc) * 100%};
@@ -196,6 +282,11 @@ body {
                         $h: 129px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
+                            left: #{math.div(25.7px, $boxWidth_mb) * 100%};
+                            top: #{math.div(436.5px, $boxHeight_mb) * 100%};
+                            $w: 323.52px;
+                            $h: 115px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 2 {
                         left: #{math.div(788px, $boxWidth_pc) * 100%};
@@ -204,6 +295,12 @@ body {
                         $h: 38px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
+                            left: #{math.div(44.2px, $boxWidth_mb) * 100%};
+                            top: #{math.div(451.6px, $boxHeight_mb) * 100%};
+                            $w: 177.8px;
+                            $h: 25.75px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
+                        
                         }
                     } @else if $i == 3 {
                         left: #{math.div(1063px, $boxWidth_pc) * 100%};
@@ -212,7 +309,11 @@ body {
                         $h: 38px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(151.89px, $boxWidth_mb) * 100%};
+                            top: #{math.div(484.85px, $boxHeight_mb) * 100%};
+                            $w: 178.2px;
+                            $h: 25.79px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 4 {
                         left: #{math.div(786px, $boxWidth_pc) * 100%};
@@ -221,7 +322,11 @@ body {
                         $h: 51px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(43px, $boxWidth_mb) * 100%};
+                            top: #{math.div(524.25px, $boxHeight_mb) * 100%};
+                            $w: 230.46px;
+                            $h: 35.93px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 5 {
                         left: #{math.div(785px, $boxWidth_pc) * 100%};
@@ -230,7 +335,11 @@ body {
                         $h: 26px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(42.4px, $boxWidth_mb) * 100%};
+                            top: #{math.div(573.44px, $boxHeight_mb) * 100%};
+                            $w: 283.29px;
+                            $h: 14.35px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 6 {
                         left: #{math.div(779px, $boxWidth_pc) * 100%};
@@ -239,7 +348,11 @@ body {
                         $h: 5px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(42px, $boxWidth_mb) * 100%};
+                            top: #{math.div(600px, $boxHeight_mb) * 100%};
+                            $w: 283.68px;
+                            $h: 3.48px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     }
                     &-obj {
@@ -254,10 +367,12 @@ body {
                         @if $i == 1 {
                             background-image: url('~/static/image/pc/topLine.png');
                             @include mob-width {
+                                background-image: url('~/static/image/pc/topLine_mb.png');
                             }
                         } @else if $i == 2 {
                             background-image: url('~/static/image/pc/title2.png');
                             @include mob-width {
+                                background-image: url('~/static/image/pc/title1_mb.png');
                             }
                         } @else if $i == 3 {
                             background-image: url('~/static/image/pc/title3.png');
@@ -282,6 +397,9 @@ body {
         }
     }
     .scrollArrow{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             cursor: pointer;
             position: absolute;
@@ -325,7 +443,7 @@ body {
     $boxWidth_pc: 1440px;
     $boxHeight_pc: 654px;
     $boxWidth_mb: 375px;
-    $boxHeight_mb: 60px;
+    $boxHeight_mb: 537px;
     //background: url('~/static/image/pc/BG.jpg') no-repeat;
     background-size: 100%;
     > .height {
@@ -336,6 +454,9 @@ body {
         }
     }
     .picture{
+        @include mob-width {
+            display: none;
+        }
         @for $i from 1 through 2 {
             .picture__#{$i} {
                 &-anime {
@@ -381,6 +502,9 @@ body {
         }
     }
     .subTitle{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             position: absolute;
             left: #{math.div(655px, $boxWidth_pc) * 100%};
@@ -397,7 +521,7 @@ body {
                 background-size: 100%;
                 background-repeat: no-repeat;
                 background-position: center;
-                background-image: url('~/static/image/pc/sub-title.png');    
+                background-image: url('~/static/image/pc/sub-title.png');
             }
         }
     }
@@ -408,6 +532,12 @@ body {
         top: 11.67vw;
         left: 49.3vw;
         width: 29.86vw;
+        @include mob-width {
+            transform: translateX(-50%);
+            left: 50%;
+            top: 15vw;
+            width: 87.2vw;
+        }
         .title{
             position: relative;
             font-size: 2.22vw;
@@ -416,6 +546,34 @@ body {
             letter-spacing: 0.2em;
             text-align: left;
             color: #008088;
+            @include mob-width {
+                font-size: 6.4vw;
+                line-height: 8.96vw;
+            }
+        }
+        .subTitle{
+            display: none;
+            @include mob-width {
+                display: block;
+            }
+            &-anime {
+                position: relative;
+                left: 0;
+                margin-top: #{math.div(16px, $boxHeight_mb) * 100%};
+                width: 63.2vw;
+                height: 5.6vw;
+                &-obj {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-image: url('~/static/image/pc/sub-title_mb.png');
+                }
+            }
         }
         .txtBox{
             position: relative;
@@ -430,6 +588,12 @@ body {
             letter-spacing: 0.1em;
             text-align: left;
             color: #333333;
+            @include mob-width {
+                margin-top: #{math.div(16px, $boxHeight_mb) * 100%};
+                height: 77.4vw;
+                font-size: 3.73vw;
+                line-height: 6.3vw;
+            }
         }
     }
     .longTeamLine{
@@ -440,6 +604,13 @@ body {
             $w: 215px;
             $h: 2px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                left: #{math.div(136px, $boxWidth_mb) * 100%};
+                top: #{math.div(479px, $boxHeight_mb) * 100%};
+                $w: 215px;
+                $h: 2px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -460,7 +631,7 @@ body {
     $boxWidth_pc: 1440px;
     $boxHeight_pc: 258px;
     $boxWidth_mb: 375px;
-    $boxHeight_mb: 60px;
+    $boxHeight_mb: 201px;
     //background: url('~/static/image/pc/BG.jpg') no-repeat;
     background-size: 100%;
     > .height {
@@ -478,6 +649,13 @@ body {
             $w: 327px;
             $h: 106px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                left: #{math.div(24px, $boxWidth_mb) * 100%};
+                top: #{math.div(56px, $boxHeight_mb) * 100%};
+                $w: 327px;
+                $h: 121px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -488,6 +666,9 @@ body {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-image: url('~/static/image/pc/careTitle.png');    
+                @include mob-width {
+                    background-image: url('~/static/image/pc/takeCareTitle.png');
+                }
             }
         }
     }
@@ -496,6 +677,10 @@ body {
     .swiper{
         border-radius: 30px 0 0 0;
         margin-left: 2.8vw;
+        @include mob-width {
+            margin-left: 6.4vw;
+            padding-bottom: 111px;
+        }
         .swiper-wrapper{
             @for $i from 1 through 3 {
                 .takeCareImg__#{$i} {
@@ -506,9 +691,19 @@ body {
                     }
                 }
             }
+            .swiper-slide{
+                .takeCareTitle{
+                    visibility: hidden;
+                }
+            }
+            .swiper-slide-active{
+                .takeCareTitle{
+                    visibility: unset;
+                }
+            }
         }
         .swiper-slide {
-            width: 66.3vw;
+            //width: 66.3vw;
             text-align: center;
             font-size: 18px;
             background: #fff;
@@ -526,10 +721,36 @@ body {
             object-fit: cover;
           }
         .takeCareImgBox{
-            width: 66.32vw;
+            //width: 66.32vw;
             .takeCareImgAnime{
                 a{
+                    text-decoration:none;
+                    color: #222222;
                     .takeCareImg{
+
+                    }
+                    .takeCareTitle{
+                        .title1{
+                            margin-top: 16px;
+                        }
+                        .title1, .title2{
+                            @include mob-width {
+                            font-size: 5.3vw;
+                            font-weight: 700;
+                            line-height: 7.5vw;
+                            letter-spacing: 0em;
+                            text-align: left;
+                            }
+                        }
+                        .des{
+                            @include mob-width {
+                                margin-top: 8px;
+                            font-size: 3.73vw;
+                            line-height: 6vw;
+                            text-align: left;
+                            letter-spacing: 0.1em;
+                            }
+                        }
 
                     }
                 }
@@ -538,6 +759,11 @@ body {
         .swiper-pagination{
             left: 180px;
             bottom: 59px;
+            @include mob-width {
+                left: 24px;
+                bottom: unset;
+                margin-top: 48px;
+            }
         }
         .swiper-pagination-bullet{
             width: 8px;
@@ -566,6 +792,9 @@ body {
             &::after{
                 content: '';
             }
+            @include mob-width {
+                display: none;
+            }
         }
         
         .swiper-button-next {
@@ -581,6 +810,9 @@ body {
             &::after{
                 content: '';
             }
+            @include mob-width {
+                display: none;
+            }
         }
     }
 }
@@ -590,7 +822,7 @@ body {
     $boxWidth_pc: 1440px;
     $boxHeight_pc: 1056px;
     $boxWidth_mb: 375px;
-    $boxHeight_mb: 60px;
+    $boxHeight_mb: 1491px;
     //background: url('~/static/image/pc/BG.jpg') no-repeat;
     background-size: 100%;
     > .height {
@@ -601,6 +833,9 @@ body {
         }
     }
     .bgCircle{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             position: absolute;
             transform: translateX(-50%);
@@ -621,6 +856,13 @@ body {
             $w: 312px;
             $h: 104px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                left: #{math.div(24px, $boxWidth_mb) * 100%};
+                top: #{math.div(56px, $boxHeight_mb) * 100%};
+                $w: 327px;
+                $h: 121px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -630,11 +872,17 @@ body {
                 background-size: 100%;
                 background-repeat: no-repeat;
                 background-position: center;
-                background-image: url('~/static/image/pc/fiveMinTitle.png');    
+                background-image: url('~/static/image/pc/fiveMinTitle.png');  
+                @include mob-width {
+                    background-image: url('~/static/image/pc/fiveMinTitle_mb.png');
+                }  
             }
         }
     }
     .subTitle{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             position: absolute;
             left: #{math.div(220px, $boxWidth_pc) * 100%};
@@ -656,28 +904,50 @@ body {
         }
     }
     .intro{
+        @include mob-width {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            top: #{math.div(201px, $boxHeight_mb) * 100%};
+        }
         @for $i from 1 through 3 {
             .intro__#{$i} {
+                display: flex;
+                justify-content: center;
                 &-anime {
                     position: absolute;
+                    @include mob-width {
+                        position: relative;
+                    }
+                    
                     @if $i == 1 {
                         width: 16vw;
                         left: #{math.div(300px, $boxWidth_pc) * 100%};
                         top: #{math.div(298px, $boxHeight_pc) * 100%};
                         @include mob-width {
+                            width: 78.7vw;
+                            top: unset;
+                            left: unset;
                         }
                     } @else if $i == 2 {
                         left: #{math.div(605px, $boxWidth_pc) * 100%};
                         top: #{math.div(258px, $boxHeight_pc) * 100%};
                         width: 16vw;
                         @include mob-width {
+                            width: 78.7vw;
+                            top: unset;
+                            left: unset;
                         }
                     } @else if $i == 3 {
                         left: #{math.div(910px, $boxWidth_pc) * 100%};
                         top: #{math.div(298px, $boxHeight_pc) * 100%};
                         width: 16vw;
                         @include mob-width {
-                            display: none;
+                            width: 78.7vw;
+                            top: unset;
+                            left: unset;
                         }
                     }
                     &-box{
@@ -691,6 +961,10 @@ body {
                             top: 0;
                             border-radius: 50%;
                             border: 2px solid #008088;
+                            @include mob-width {
+                                width: 42.6vw;
+                                height: 42.6vw;
+                            }
                             .line{
                                 position: absolute;
                                 width: 0.83vw;
@@ -701,6 +975,12 @@ body {
                                 background-repeat: no-repeat;
                                 background-position: center;
                                 background-image: url('~/static/image/pc/Ellipse-16.png');
+                                @include mob-width {
+                                    width: 2.4vw;
+                                    height: 5.87vw;
+                                    top: 10.4vw;
+                                    left: 0.25vw;
+                                }
                             }
                         }
                         @if $i == 1 {
@@ -714,6 +994,10 @@ body {
                                     left: 10vw;
                                     top: -0.47vw;
                                     transform: rotate(90deg);
+                                    @include mob-width {
+                                        left: 27.8vw;
+                                        top: -1.5vw;
+                                    }
                                 }
                             }
                         } @else if $i == 3 {
@@ -723,6 +1007,10 @@ body {
                                     left: 6.2vw;
                                     top: -1vw;
                                     transform: rotate(60deg);
+                                    @include mob-width {
+                                        left: 18vw;
+                                        top: -2.8vw;
+                                    }
                                 }
                             }
                         }
@@ -732,6 +1020,10 @@ body {
                             top: 50%;
                             left: 50%;
                             width: 13.75vw;
+                            @include mob-width {
+                                width: 39vw;
+                                height: 39vw;
+                            }
                             img{
                                 width: 100%;
                                 display: block;
@@ -758,6 +1050,13 @@ body {
                         color: #008088;
                         @if $i == 2 {
                             width: 85%;
+                            @include mob-width {
+                                width: 100%;
+                            }
+                        }
+                        @include mob-width {
+                            font-size: 5.3vw;
+                            line-height: 7.5vw;
                         }
                     }
                     &-des{
@@ -766,6 +1065,13 @@ body {
                         margin-top: 0.3vw;
                         @if $i == 2 {
                             width: 85%;
+                            @include mob-width {
+                                width: 100%;
+                            }
+                        }
+                        @include mob-width {
+                            margin-top: 1vw;
+                            margin-bottom: 6.4vw;
                         }
                         img{
                             width: 100%;
@@ -777,6 +1083,9 @@ body {
         }
     }
     .bottomLine{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             position: absolute;
             left: #{math.div(300px, $boxWidth_pc) * 100%};
@@ -815,6 +1124,13 @@ body {
                     }
                 }
             }
+            @include mob-width {
+                left: #{math.div(53px, $boxWidth_mb) * 100%};
+                top: #{math.div(1186px, $boxHeight_mb) * 100%};
+                $w: 269px;
+                $h: 48px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -827,6 +1143,9 @@ body {
                 background-image: url('~/static/image/pc/BTN.png');    
             }
             .btnIcon{
+                @include mob-width {
+                    display: none;
+                }
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -839,6 +1158,7 @@ body {
                     top: 0;
                     width: 4.44vw;
                     height: 4.44vw;
+                    
                     &-obj {
                         position: absolute;
                         left: 0;
@@ -862,6 +1182,13 @@ body {
             $w: 279px;
             $h: 104px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                left: #{math.div(24px, $boxWidth_mb) * 100%};
+                top: #{math.div(1346px, $boxHeight_mb) * 100%};
+                $w: 327px;
+                $h: 121px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -871,7 +1198,10 @@ body {
                 background-size: 100%;
                 background-repeat: no-repeat;
                 background-position: center;
-                background-image: url('~/static/image/pc/mapTitle.png');    
+                background-image: url('~/static/image/pc/mapTitle.png');
+                @include mob-width {
+                    background-image: url('~/static/image/pc/mapTitle_mb.png');
+                }    
             }
         }
     }
@@ -882,7 +1212,7 @@ body {
     $boxWidth_pc: 1440px;
     $boxHeight_pc: 960px;
     $boxWidth_mb: 375px;
-    $boxHeight_mb: 60px;
+    $boxHeight_mb: 680px;
     //background: url('~/static/image/pc/BG.jpg') no-repeat;
     background-size: 100%;
     > .height {
@@ -902,6 +1232,15 @@ body {
             $h: 800px;
             border-radius: 0 40px 0px 40px;
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                transform: unset;
+                left: 0;
+                $w: 375px;
+                $h: 600px;
+                border-radius: 0 40px 0px 40px;
+                box-sizing: border-box;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -914,6 +1253,11 @@ body {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-image: url('~/static/image/pc/mapImage.png');
+                @include mob-width {
+                    border: 4px solid #CADEDF;
+                    box-sizing: border-box;
+                    background-image: url('~/static/image/pc/mapImage_mb.png');
+                }
                 &-mask{
                     position: absolute;
                     left: -2px;
@@ -935,8 +1279,13 @@ body {
             top: #{math.div(32px, $boxHeight_pc) * 100%};
             $w: 1300px;
             $h: 740px;
-            
             @include getImgBoxSize($w, $h, $boxWidth_pc);
+            @include mob-width {
+                top: #{math.div(16px, $boxHeight_mb) * 100%};
+                $w: 343px;
+                $h: 570px;
+                @include getImgBoxSize($w, $h, $boxWidth_mb);
+            }
             &-obj {
                 position: absolute;
                 left: 0;
@@ -963,6 +1312,11 @@ body {
                         $h: 40px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
+                            left: #{math.div(91.5px, $boxWidth_mb) * 100%};
+                            top: #{math.div(138px, $boxHeight_mb) * 100%};
+                            $w: 105px;
+                            $h: 40px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 2 {
                         left: #{math.div(433.5px, $boxWidth_pc) * 100%};
@@ -971,6 +1325,11 @@ body {
                         $h: 40px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
+                            left: #{math.div(204.5px, $boxWidth_mb) * 100%};
+                            top: #{math.div(138px, $boxHeight_mb) * 100%};
+                            $w: 59px;
+                            $h: 40px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 3 {
                         left: #{math.div(339.5px, $boxWidth_pc) * 100%};
@@ -979,7 +1338,11 @@ body {
                         $h: 40px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(111.5px, $boxWidth_mb) * 100%};
+                            top: #{math.div(186px, $boxHeight_mb) * 100%};
+                            $w: 171px;
+                            $h: 40px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     } @else if $i == 4 {
                         left: #{math.div(461.5px, $boxWidth_pc) * 100%};
@@ -988,7 +1351,11 @@ body {
                         $h: 53px;
                         @include getImgBoxSize($w, $h, $boxWidth_pc);
                         @include mob-width {
-                            display: none;
+                            left: #{math.div(233.5px, $boxWidth_mb) * 100%};
+                            top: #{math.div(196px, $boxHeight_mb) * 100%};
+                            $w: 33px;
+                            $h: 53px;
+                            @include getImgBoxSize($w, $h, $boxWidth_mb);
                         }
                     }
                     &-obj {
@@ -1035,6 +1402,9 @@ body {
         }
     }
     .introImg2{
+        @include mob-width {
+            display: none;
+        }
         @for $i from 1 through 2 {
             .introImg2__#{$i} {
                 &-anime {
@@ -1080,6 +1450,9 @@ body {
         }
     }
     .introImg3{
+        @include mob-width {
+            display: none;
+        }
         &-anime {
             position: absolute;
             left: #{math.div(922.5px, $boxWidth_pc) * 100%};
@@ -1113,12 +1486,18 @@ body {
                         top: #{math.div(326px, $boxHeight_pc) * 100%};
                         width: 16vw;
                         @include mob-width {
+                            width: 61vw;
+                            left: #{math.div(72px, $boxWidth_mb) * 100%};
+                            top: #{math.div(271px, $boxHeight_mb) * 100%};
                         }
                     } @else if $i == 2 {
                         left: #{math.div(605px, $boxWidth_pc) * 100%};
                         top: #{math.div(384px, $boxHeight_pc) * 100%};
                         width: 16vw;
                         @include mob-width {
+                            @include mob-width {
+                                display: none;
+                            }
                         }
                     } @else if $i == 3 {
                         left: #{math.div(910px, $boxWidth_pc) * 100%};
@@ -1136,15 +1515,9 @@ body {
                         letter-spacing: 0.1em;
                         text-align: left;
                         color: #EC6C00;
-                        @if $i == 1 {
-                            @include mob-width {
-                            }
-                        } @else if $i == 2 {
-                            @include mob-width {
-                            }
-                        } @else if $i == 3 {
-                            @include mob-width {
-                            }
+                        @include mob-width {
+                            font-size:3.7vw;
+                            line-height: 5.2vw;
                         }
                     }
                     &-des {
@@ -1153,6 +1526,10 @@ body {
                         line-height: 1.8vw;
                         letter-spacing: 0.1em;
                         text-align: left;
+                        @include mob-width {
+                            font-size:4.3vw;
+                            line-height: 6.8vw;
+                        }
                     }
                 }
             }
@@ -1169,6 +1546,13 @@ body {
                 border-radius: 60px;
                 overflow: hidden;
                 transition:all  0.6s  ease-in-out;
+                @include mob-width {
+                    left: #{math.div(53px, $boxWidth_mb) * 100%};
+                    top: #{math.div(416px, $boxHeight_mb) * 100%};
+                    $w: 269px;
+                    $h: 48px;
+                    @include getImgBoxSize($w, $h, $boxWidth_mb);
+                }
                 &:hover{
                     .btnIcon{
                         .btnIcon-anime{
@@ -1194,6 +1578,9 @@ body {
                 right: 0;
                 bottom: 0;
                 overflow: hidden;
+                @include mob-width {
+                    display: none;
+                }
                 .btnIcon-anime{
                     position: absolute;
                     right:23vw;

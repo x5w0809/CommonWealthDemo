@@ -1,6 +1,6 @@
 <template>
     <div id="main" >
-        <Header @navBarOpen="navBarOpen = true"  @increment="scrollTo" />
+        <!-- <Header @navBarOpen="navBarOpen = true" :isMobile="isMobile" @increment="scrollTo" /> -->
         <right-side-bar />
         <div class="container" data-scroll-container>
             
@@ -36,6 +36,11 @@
                 </div>
                 <div class="txtContain" data-scroll data-scroll-speed="2"  data-scroll-direction="horizontal">
                     <span class="title">長照2.0，<br />讓照顧的路上有專業相挺</span>
+                    <div class="subTitle">
+                        <div class="subTitle-anime subTitleAnime">
+                            <div class="subTitle-anime-obj"></div>
+                        </div>
+                    </div>
                     <textarea class="txtBox" readonly>台灣走向超高齡社會，速度比想像中還要快又急，隨著人口老化加速，未來需要照顧年長父母的青壯人口，只會增加，不會減少。
 老年人壽命的延長，也表示照顧的時間會愈來愈長；甚至是在自己退休之後，仍須持續照顧長輩。
 「上有高堂，下有嗷嗷待哺」，三明治世代所面臨的困境，才是最需要協助的一群人。
@@ -63,12 +68,12 @@
                     <swiper-slide :class="`takeCareImg__${index + 1} takeCareImgBox`" v-for="(item, index) in takeCareImgList" :key="'takeCareImg' + index" data-anime>
                         <div :class="`takeCareImg__${index + 1}-anime takeCareImgAnime`" data-scroll data-scroll-speed="-1">
                             <a :href="item.url" target="_blank">
-                                <div class="takeCareTitle">
-                                    <div class="takeCareTitle-anime">
-                                        <div class="takeCareTitle-anime-obj"></div>
-                                    </div>
-                                </div>
                                 <img class="takeCareImg" :src="item.image" />
+                                <div class="takeCareTitle">
+                                    <div class="title1">{{ item.title }}</div>
+                                    <div class="title2">{{ item.title2 }}</div>
+                                    <div class="des">{{ item.des }}</div>
+                                </div>
                             </a>
                         </div>
                     </swiper-slide>
@@ -105,7 +110,8 @@
                             </div>
                             <div :class="`intro__${index + 1}-anime-title`">{{ item.title }}</div>
                             <div :class="`intro__${index + 1}-anime-des`">
-                                <img :src="item.des" alt="">
+                                <img :src="item.des" alt="" v-if="!isMobile">
+                                <img :src="item.mbDes" alt="" v-else>
                             </div>
                         </div>
                     </div>
@@ -190,9 +196,8 @@
                 </div>
                 <div class="height"></div>
             </section>
-            <Footer />
+            <Footer :isMobile="isMobile" />
         </div>
-        <!-- <Footer /> -->
         
         <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" />
     </div>
@@ -216,19 +221,15 @@ export default {
                 spaceBetween: 0,
                 width: 955,
                 centeredSlides:true,
-                // breakpoints: {
-                //     1024: {
-                //         slidesPerView: 2,
-                //     },
-                //     768: {
-                //         slidesPerView: 1,
-                //         spaceBetween: 100,
-                //     },
-                //     375: {
-                //         slidesPerView: 1,
-                //         spaceBetween: 100,
-                //     },
-                // },
+                breakpoints: {
+                    
+                    768: {
+                        
+                    },
+                    375: {
+                        width: 327,
+                    },
+                },
                 //direction:'horizontal',
                 navigation: {
                     nextEl: '.swiper-button-next',
@@ -243,15 +244,24 @@ export default {
             takeCareImgList:[
                 {
                     url:'https://www.cw.com.tw/article/5125049',
-                    image: require('@/static/image/pc/takeCareImg1.png')
+                    image: require('@/static/image/pc/takeCareImg1.png'),
+                    title: '面對照顧壓力大？張曼娟：',
+                    title2: '記得提醒自己，這一切都會過去的',
+                    des:'各位照顧者又要展開新的一年，每天闖關又常感到孤單的日子。'
                 },
                 {
                     url:'https://www.cw.com.tw/article/5124631',
-                    image: require('@/static/image/pc/takeCareImg2.png')
+                    image: require('@/static/image/pc/takeCareImg2.png'),
+                    title: '小六生可能已是照顧者',
+                    title2: '日本小學生與失智者共開店',
+                    des:'當我們擔心學童與失智者接觸的安危，日本小學已納入課程...'
                 },
                 {
                     url:'https://www.cw.com.tw/article/5123858',
-                    image: require('@/static/image/pc/takeCareImg3.png')
+                    image: require('@/static/image/pc/takeCareImg3.png'),
+                    title: '不想活得又老又窮',
+                    title2: '避開50歲最後悔的5個財務決定',
+                    des:'「早知道會活那麼久，當初就……」'
                 }
             ],
             introList:[
@@ -259,16 +269,19 @@ export default {
                     image: require('@/static/image/pc/Ellipse-14.png'),
                     title:'服務對象',
                     des: require('@/static/image/pc/introDes1.png'),
+                    mbDes: require('@/static/image/pc/introDes1_mb.png'),
                 },
                 {
                     image: require('@/static/image/pc/Ellipse-11.png'),
                     title:'申請流程',
                     des: require('@/static/image/pc/introDes2.png'),
+                    mbDes: require('@/static/image/pc/introDes2_mb.png'),
                 },
                 {
                     image: require('@/static/image/pc/Ellipse-18.png'),
                     title:'服務內容',
                     des: require('@/static/image/pc/introDes3.png'),
+                    mbDes: require('@/static/image/pc/introDes3_mb.png'),
                 },
             ],
             mapIntroList:[

@@ -196,10 +196,8 @@
                 <div class="height"></div>
             </section>
             <Footer :isMobile="isMobile" />
-            <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" @increment="scrollTo" />
         </div>
-        
-        
+        <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" @increment="scrollTo" />
     </div>
 </template>
 

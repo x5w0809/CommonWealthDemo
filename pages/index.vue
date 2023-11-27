@@ -305,7 +305,6 @@ export default {
         }
     },
     mounted() {
-        this.isDevice()
         const self =this
         var scroll
         setTimeout(()=>{
@@ -328,16 +327,12 @@ export default {
                     clouds3.style.transform = "rotate(0deg)";
                 }
             });
-            addEventListener('resize',()=>{
-                // self.scroll.update();
-                // self.scroll.init()
-            })
-        },400)
+        },300)
+        self.isDevice()
         window.bannerAnime()
         // window.loopAnime()
         addEventListener('resize',()=>{
-            this.isDevice()
-            scroll.init()
+            self.isDevice()
         })
         
     },

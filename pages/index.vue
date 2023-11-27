@@ -311,21 +311,15 @@ export default {
         const self =this
         var scroll
         setTimeout(()=>{
-            self.scroll = new LocomotiveScroll({
+            scroll = new LocomotiveScroll({
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
-            const element =document.querySelector(".map");
-            let mapEl = element.offsetTop;
-            let bodyTop = document.querySelector(".container");
-            let bodyEl = bodyTop.scrollTop;
             let clouds1 = document.querySelector(".circle__1");
             let clouds2 = document.querySelector(".circle__2");
             let clouds3 = document.querySelector(".circle__3");
-            self.scroll.on("scroll", (instance) => {
+            scroll.on("scroll", (instance) => {
                 if(typeof instance.currentElements['fiveMin'] === 'object') {
-                    let progress = instance.currentElements['fiveMin'].progress;
-                    console.log(progress);
                     clouds1.style.transform = "rotate(460deg)";
                     clouds2.style.transform = "rotate(-450deg)";
                     clouds3.style.transform = "rotate(500deg)";
@@ -337,14 +331,14 @@ export default {
             });
             addEventListener('resize',()=>{
                 // self.scroll.update();
-                self.scroll.init()
+                // self.scroll.init()
             })
         },200)
         window.bannerAnime()
         // window.loopAnime()
         addEventListener('resize',()=>{
             this.isDevice()
-            
+            scroll.init()
         })
         
     },

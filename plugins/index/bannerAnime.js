@@ -25,6 +25,7 @@ if (process.client) {
         return Math.random() * (max - min) + min
     }
     window.bannerAnime = function (_isMobile, self) {
+      window.body.style.overflowY = "hidden";
         var main = document.querySelector('#main')
         var bannerBox = main.querySelector('.banner')
         var title1El = bannerBox.querySelectorAll('.title__1-anime')
@@ -154,6 +155,9 @@ if (process.client) {
                 },
             ],
             duration: 1.2,
+            onComplete () {
+              window.body.style.overflowY = "auto";
+            }
         },'-=1.1')
         return tl
     }

@@ -334,7 +334,7 @@ export default {
                 // self.scroll.update();
                 // self.scroll.init()
             })
-        },50)
+        },400)
         window.bannerAnime()
         // window.loopAnime()
         addEventListener('resize',()=>{

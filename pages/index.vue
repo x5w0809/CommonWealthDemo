@@ -1,9 +1,8 @@
 <template>
     <div id="main" >
-        <!-- <Header @navBarOpen="navBarOpen = true" :isMobile="isMobile" @increment="scrollTo" /> -->
+        <Header @navBarOpen="navBarOpen = true" :isMobile="isMobile" @increment="scrollTo" />
         <right-side-bar />
         <div class="container" data-scroll-container>
-            
             <section class="banner">
                 <div class="title">
                     <div :class="`title__${index + 1}`" v-for="(item, index) in 6" :key="'title' + index" data-anime>
@@ -100,8 +99,8 @@
                 <div class="intro">
                     <div :class="`intro__${index + 1}`" v-for="(item, index) in introList" :key="'intro' + index" data-anime>
                         <div :class="`intro__${index + 1}-anime introAnime`">
-                            <div :class="`intro__${index + 1}-anime-box`">
-                                <div :class="`circle__${index + 1} circle`" data-scroll data-scroll-call="window.circleAnime()" >
+                            <div :class="`intro__${index + 1}-anime-box`"  data-scroll data-scroll-id="fiveMin">
+                                <div :class="`circle__${index + 1} circle`"  >
                                     <div class="line"></div>
                                 </div>
                                 <div class="picture">
@@ -197,9 +196,10 @@
                 <div class="height"></div>
             </section>
             <Footer :isMobile="isMobile" />
+            <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" @increment="scrollTo" />
         </div>
         
-        <Nav-bar @navBarOpen="navBarOpen = false" v-if="navBarOpen" />
+        
     </div>
 </template>
 
@@ -219,12 +219,17 @@ export default {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 0,
-                width: 955,
+                width: 1442,
                 centeredSlides:true,
                 breakpoints: {
-                    
+                    1440:{
+                        width: 955,
+                    },
                     768: {
-                        
+                        width: 600,
+                    },
+                    640: {
+                        width:420,
                     },
                     375: {
                         width: 327,
@@ -244,21 +249,21 @@ export default {
             takeCareImgList:[
                 {
                     url:'https://www.cw.com.tw/article/5125049',
-                    image: require('@/static/image/pc/takeCareImg1.png'),
+                    image: require('@/static/image/pc/takeCareImg_1.png'),
                     title: '面對照顧壓力大？張曼娟：',
                     title2: '記得提醒自己，這一切都會過去的',
                     des:'各位照顧者又要展開新的一年，每天闖關又常感到孤單的日子。'
                 },
                 {
                     url:'https://www.cw.com.tw/article/5124631',
-                    image: require('@/static/image/pc/takeCareImg2.png'),
+                    image: require('@/static/image/pc/takeCareImg_2.png'),
                     title: '小六生可能已是照顧者',
                     title2: '日本小學生與失智者共開店',
                     des:'當我們擔心學童與失智者接觸的安危，日本小學已納入課程...'
                 },
                 {
                     url:'https://www.cw.com.tw/article/5123858',
-                    image: require('@/static/image/pc/takeCareImg3.png'),
+                    image: require('@/static/image/pc/takeCareImg_3.png'),
                     title: '不想活得又老又窮',
                     title2: '避開50歲最後悔的5個財務決定',
                     des:'「早知道會活那麼久，當初就……」'
@@ -310,26 +315,36 @@ export default {
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
+            const element =document.querySelector(".map");
+            let mapEl = element.offsetTop;
+            let bodyTop = document.querySelector(".container");
+            let bodyEl = bodyTop.scrollTop;
             let clouds1 = document.querySelector(".circle__1");
             let clouds2 = document.querySelector(".circle__2");
             let clouds3 = document.querySelector(".circle__3");
             self.scroll.on("scroll", (instance) => {
-                if (instance.scroll.y > 2300 && instance.scroll.y <2800) {
-                    clouds1.style.transform = "rotate(360deg)";
+                if(typeof instance.currentElements['fiveMin'] === 'object') {
+                    let progress = instance.currentElements['fiveMin'].progress;
+                    console.log(progress);
+                    clouds1.style.transform = "rotate(460deg)";
                     clouds2.style.transform = "rotate(-450deg)";
                     clouds3.style.transform = "rotate(500deg)";
-                } else {
+                }else{
                     clouds1.style.transform = "rotate(0deg)";
                     clouds2.style.transform = "rotate(0deg)";
                     clouds3.style.transform = "rotate(0deg)";
                 }
             });
-            
+            addEventListener('resize',()=>{
+                self.scroll.update();
+                self.scroll.init()
+            })
         },100)
         window.bannerAnime()
         // window.loopAnime()
         addEventListener('resize',()=>{
             this.isDevice()
+            
         })
         
     },

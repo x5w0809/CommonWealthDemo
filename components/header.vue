@@ -19,18 +19,8 @@
                 </a>
             </div>
         </div>
-        <div class="mb_navBar" v-if="isMobile">
-            <div class="closeBtn" @click="navBarClose()" ></div>
-            <div :class="`navBar__${index + 1}`" v-for="(item, index) in navItemList" :key="'navBar' + index" data-anime>
-                <div :class="`navBar__${index + 1}-hr`"></div>
-                <a @click="scrollTo(item.el)">
-                    <span :class="`navBar__${index + 1}-anime navBarAnime`">
-                        {{ item.name }}
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div class="navBarBtn" @click="navBarOpen">
+        
+        <div class="navBarBtn" @click="navBarOpen" v-if="isMobile">
             <a href="javascript:void(0);">
                 <div class="navBarBtn-anime">
                     <div class="navBarBtn-anime-obj"></div>
@@ -62,7 +52,7 @@ export default {
                     name:'長照地圖',
                     el:'.map'
                 },
-            ]
+            ],
         }
     },
     mounted() {

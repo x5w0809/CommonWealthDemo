@@ -1,7 +1,6 @@
 <template>
     <div id="main" >
         <Header @navBarOpen="navBarOpen = true" :isMobile="isMobile" @increment="scrollTo" />
-        <right-side-bar />
         <div class="container" data-scroll-container>
             <section class="banner">
                 <div class="title">

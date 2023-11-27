@@ -315,6 +315,7 @@ export default {
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
+            scroll.init()
             let clouds1 = document.querySelector(".circle__1");
             let clouds2 = document.querySelector(".circle__2");
             let clouds3 = document.querySelector(".circle__3");
@@ -333,7 +334,7 @@ export default {
                 // self.scroll.update();
                 // self.scroll.init()
             })
-        },200)
+        },50)
         window.bannerAnime()
         // window.loopAnime()
         addEventListener('resize',()=>{

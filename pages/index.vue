@@ -336,7 +336,7 @@ export default {
                 }
             });
             addEventListener('resize',()=>{
-                self.scroll.update();
+                // self.scroll.update();
                 self.scroll.init()
             })
         },200)

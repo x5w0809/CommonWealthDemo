@@ -326,7 +326,8 @@ export default {
                     clouds3.style.transform = "rotate(0deg)";
                 }
             });
-        },500)
+            scroll.update();
+        },1000)
         self.isDevice()
         window.bannerAnime()
         // window.loopAnime()

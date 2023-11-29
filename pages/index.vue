@@ -211,7 +211,7 @@ export default {
         return {
             navBarOpen: false,
             swiperOption: {
-                autoplay: 1500,
+                autoplay:true,
                 // speed: 300,
                 loop: true,
                 slidesPerView: 1,

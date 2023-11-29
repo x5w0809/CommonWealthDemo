@@ -202,10 +202,8 @@
 
 <script>
 import LocomotiveScroll from 'locomotive-scroll';
-import rightSideBar from '../components/rightSideBar.vue'
 import Swiper from 'swiper';
 export default {
-    components: { rightSideBar },
     name: 'IndexPage',
     data() {
         return {
@@ -305,40 +303,29 @@ export default {
                 },
             ],
             isMobile: false,
-            //bannerAnimeFinish: false,
             scroll: null
         }
     },
-    // watch:{
-    //     bannerAnimeFinish: function (newValue,oldValue) {
-    //         const self =this
-    //         if(newValue){
-    //             console.log(newValue)
-    //             self.scrollInit()
-    //         }
-    //     }
-    // },
     mounted() {
         const self =this
         self.isDevice()
         const p = new Promise((resolve, reject) => {
         setTimeout(function () {
             resolve(1);
-        }, 100);
+        }, 200);
         });
         p.then(()=>{
             window.bannerAnime()
-        })
-        .then(()=>{
+            })
+            .then(()=>{
             setTimeout(function () {
                 self.scrollInit()
             },1200)
-        })
+            })
         addEventListener('resize',()=>{
             self.isDevice()
             self.scroll.update()
         })
-        
     },
     methods: {
         isDevice() {
@@ -362,7 +349,7 @@ export default {
             let scrollContainer = document.querySelector("[data-scroll-container]");
             self.scroll = new LocomotiveScroll({
                 el: scrollContainer,
-                smooth: true
+                smooth: true,
             });
             //self.scroll.init()
             let clouds1 = document.querySelector(".circle__1");
@@ -384,6 +371,7 @@ export default {
             });
             addEventListener('resize',()=>{
                 self.scroll.update()
+                self.scroll.init()
             })
         }
     },

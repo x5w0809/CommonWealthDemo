@@ -211,8 +211,12 @@ export default {
         return {
             navBarOpen: false,
             swiperOption: {
-                autoplay:true,
-                // speed: 300,
+                autoplay:{
+                    delay:2000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                speed: 800,
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 0,
@@ -308,15 +312,15 @@ export default {
         var scroll
         setTimeout(()=>{
             let scrollContainer = document.querySelector("[data-scroll-container]");
-            scroll = new LocomotiveScroll({
+            self.scroll = new LocomotiveScroll({
                 el: scrollContainer,
                 smooth: true
             });
-            scroll.init()
+            self.scroll.init()
             let clouds1 = document.querySelector(".circle__1");
             let clouds2 = document.querySelector(".circle__2");
             let clouds3 = document.querySelector(".circle__3");
-            scroll.on("scroll", (instance) => {
+            self.scroll.on("scroll", (instance) => {
                 if(typeof instance.currentElements['fiveMin'] === 'object') {
                     clouds1.style.transform = "rotate(460deg)";
                     clouds2.style.transform = "rotate(-450deg)";
@@ -328,12 +332,12 @@ export default {
                 }
             });
             imagesLoaded(scrollContainer, { background: true }, function () {
-                scroll.update();
+               self.scroll.update();
             });
             addEventListener('resize',()=>{
-                scroll.destroy()
-                scroll.init()
-                scroll.update()
+                self.scroll.destroy()
+                self.scroll.init()
+                self.scroll.update()
             })
         },500)
         self.isDevice()

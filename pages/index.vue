@@ -382,9 +382,9 @@ export default {
             imagesLoaded(scrollContainer, { background: true }, function () {
                self.scroll.update();
             });
-            // addEventListener('resize',()=>{
-            //     self.scroll.update()
-            // })
+            addEventListener('resize',()=>{
+                self.scroll.update()
+            })
         }
     },
 }

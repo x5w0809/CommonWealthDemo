@@ -307,8 +307,9 @@ export default {
         const self =this
         var scroll
         setTimeout(()=>{
+            let scrollContainer = document.querySelector("[data-scroll-container]");
             scroll = new LocomotiveScroll({
-                el: document.querySelector('[data-scroll-container]'),
+                el: scrollContainer,
                 smooth: true
             });
             scroll.init()
@@ -326,8 +327,15 @@ export default {
                     clouds3.style.transform = "rotate(0deg)";
                 }
             });
-            scroll.update();
-        },1000)
+            imagesLoaded(scrollContainer, { background: true }, function () {
+                scroll.update();
+            });
+            addEventListener('resize',()=>{
+                scroll.destroy()
+                scroll.init()
+                scroll.update()
+            })
+        },500)
         self.isDevice()
         window.bannerAnime()
         // window.loopAnime()

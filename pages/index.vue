@@ -364,7 +364,7 @@ export default {
                 el: scrollContainer,
                 smooth: true
             });
-            self.scroll.init()
+            //self.scroll.init()
             let clouds1 = document.querySelector(".circle__1");
             let clouds2 = document.querySelector(".circle__2");
             let clouds3 = document.querySelector(".circle__3");

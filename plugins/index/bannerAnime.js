@@ -154,7 +154,6 @@ if (process.client) {
                 },
             ],
             duration: 1.2,
-            
         },'-=1.1')
         return tl
     }
